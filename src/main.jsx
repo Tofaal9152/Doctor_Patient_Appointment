@@ -3,8 +3,9 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 // import App from "./App.jsx";
 import LandingPage from "./pages/LandingPage/LandingPage.jsx";
-import Login from "./pages/LogIn/LoginInterface.jsx";
-import Signup from "./pages/Signup/SignupInterface.jsx";
+import Doctor_Registration from './pages/Doctor_Registration/Doctor_Registration.jsx'
+import Patient_Registration from "./pages/Patient_Registration/Patient_Registration.jsx"
+
 import Messenger from "./pages/Messenger/Messenger.jsx";
 // redux
 import { Provider } from "react-redux";
@@ -18,12 +19,12 @@ const router = createBrowserRouter([
     element: <LandingPage />,
   },
   {
-    path: "/login",
-    element: <Login />,
+    path: "/doctorregistration",
+    element: <Doctor_Registration />,
   },
   {
-    path: "/signup",
-    element: <Signup />,
+    path: "/patientregistration",
+    element: <Patient_Registration />,
   },
   {
     path: "/messenger",
