@@ -265,3 +265,34 @@ export const Translate_to = [
     language: "Chinese",
   },
 ];
+export const specialization = [
+  {
+    value: "Specialization",
+    label: "specialization",
+  },
+
+  {
+    value: "Cardiology",
+    label: "Cardiology",
+  },
+
+  {
+    value: "Dermatology",
+    label: "Dermatology",
+  },
+
+  {
+    value: "Neurology",
+    label: "Neurology",
+  },
+
+  {
+    value: "Orthopedics",
+    label: "Orthopedics",
+  },
+
+  {
+    value: "Pediatrics",
+    label: "Pediatrics",
+  },
+];

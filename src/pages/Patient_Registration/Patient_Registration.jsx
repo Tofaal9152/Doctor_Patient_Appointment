@@ -22,34 +22,33 @@ const Patient_Registration = () => {
       style={{ backgroundImage: `url(${backgroundImage})` }}
       className="interfont flex flex-col items-center justify-center h-screen bg-cover"
     >
-      <h1 className="text-3xl font-semibold text-[#538296] mb-4">
+      <h1 className="text-3xl font-semibold text-[#538296] text-center mb-4">
         Patient Registration
       </h1>
-      <div className="bg-opacity-65 flex flex-col items-center rounded-md border border-[#c5d8e2] py-[2rem] px-[6rem] shadow-2xl backdrop-filter backdrop-blur-sm space-y-6">
+      <div className="bg-opacity-65 flex flex-col items-center rounded-md border border-[#c5d8e2] shadow-2xl backdrop-filter backdrop-blur-sm py-3 sm:p-3 space-y-6">
         {/* Profile Image */}
-        <div className="flex  items-end justify-center space-y-2">
+        <div className="flex w-full items-end justify-center space-y-2">
           <img
             className="object-cover w-[4.5rem] h-[4.5rem] rounded-full ring-2 ring-[#53829C] cursor-pointer"
             src={Avater}
             alt="Avatar"
           />
-          
+
           <div className="relative ">
             <label htmlFor="fileInput" className="cursor-pointer">
-              <MdImage  className="text-[#53829C]" />
+              <MdImage className="text-[#53829C]" />
             </label>
             <input
               type="file"
               id="fileInput"
-              className="opacity-0 absolute top-0 left-0 w-full h-full cursor-pointer"
-              style={{ display: "none" }}
+              className="opacity-0 hidden absolute top-0 left-0 w-full h-full cursor-pointer"
             />
           </div>
         </div>
         {/* From */}
-        <div className="">
+        <div className="w-full p-5 sm:p-10">
           <form
-            className="space-y-6"
+            className="space-y-4 w-full "
             action=""
             onSubmit={handleSubmit(onSubmit)}
           >
@@ -163,7 +162,7 @@ const Patient_Registration = () => {
                 className="bg-[#53829C] mt-[2rem] hover:bg-[#497791] rounded-md w-full px-2 py-1 cursor-pointer hover:scale-105 duration-300 text-md font-semibold text-white"
                 disabled={isSubmitting}
                 type="submit"
-                value="Log in"
+                value="Register"
               />
             </div>
           </form>
