@@ -25,8 +25,8 @@ const Available_Doctor = () => {
                 <h1 className="text-xl flex-wrap font-semibold  mt-2 mb-2">
                   {item.name}
                 </h1>
-                <p className="text-sm  mb-4">{item.specialty}</p>
-                <div className="mt-2 ">
+                <p className="text-sm">{item.specialty}</p>
+                <div className="mt-3 ">
                   <p>
                     Available:{" "}
                     <span className="font-medium">{item.availability}</span>
