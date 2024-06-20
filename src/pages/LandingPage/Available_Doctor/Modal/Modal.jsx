@@ -1,5 +1,5 @@
 import React from "react";
-import Avater from '../../../../assets/Avatar.jpeg'
+import Avater from "../../../../assets/doctor_Logo.png";
 import { ImCross } from "react-icons/im";
 
 const Modal = ({ isVisible, onClose }) => {
@@ -14,14 +14,14 @@ const Modal = ({ isVisible, onClose }) => {
       <div className="flex flex-col ">
         <div
           onClick={(e) => e.stopPropagation()}
-          className="rounded-md p-[3.7rem] space-y-4 bg-white flex flex-col text-center items-center"
+          className="rounded-md p-[3.7rem] space-y-4 bg-white  flex flex-col text-center items-center"
         >
           <img
             className="w-20 h-20 rounded-full object-cover border-2 border-[#53829C]"
             src={Avater}
             alt="Doctor Avatar"
           />
-          <h1 className="text-xl flex-wrap font-semibold text-[#2a5c83] mt-2 mb-2">
+          <h1 className="text-xl flex-wrap font-semibold text-[] mt-2 mb-2">
             Dr. Md Tofaal Ahmed
           </h1>
           <p className="text-sm text-[#2a5c83] mb-4">Nephrologist</p>

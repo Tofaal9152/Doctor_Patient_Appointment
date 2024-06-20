@@ -159,9 +159,10 @@
 }
 
 .glass {
-  background: rgb(154 174 233 / 11%);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(7px);
+  /* background: rgb(154 174 233 / 11%); */
+  background:white;
+  
+  
 }
 .hide_scroll::-webkit-scrollbar {
   display: none;
