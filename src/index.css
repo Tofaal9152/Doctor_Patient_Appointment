@@ -160,7 +160,7 @@
 
 .glass {
   background: rgba(3, 3, 3, 0.1);
-  backdrop-filter: blur(7px);
+  backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(7px);
 }
 .hide_scroll::-webkit-scrollbar {

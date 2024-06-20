@@ -10,7 +10,7 @@ import { Outlet } from "react-router-dom";
 const LandingPage = () => {
   return (
     <div
-      className=" w-full overflow-hidden h-screen object-cover bg-left z-0"
+      className="interfont w-full h-screen overflow-hidden object-cover bg-left z-0"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <div className="w-full sticky top-0 glass z-10">
@@ -23,7 +23,7 @@ const LandingPage = () => {
       {/* Hero */}
       <div className="flex">
         <Left_Sidebar />
-        <Outlet/>
+        <Outlet />
       </div>
     </div>
   );
