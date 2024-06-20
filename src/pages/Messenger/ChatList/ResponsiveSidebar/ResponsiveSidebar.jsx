@@ -16,25 +16,25 @@ const ResponsiveSidebar = () => {
     <div className="">
       <div className="flex-col interfont flex items-center justify-start text-center h-screen overflow-y-hidden p-2 space-y-5">
         <img
-          className="custom500:w-[1.7rem] w-[1.3rem] custom500:h-[1.7rem] h-[1.3rem] rounded-full object-cover ring-2 ring-[#8e3df8] shadow-md"
+          className="custom500:w-[1.7rem] w-[1.3rem] custom500:h-[1.7rem] h-[1.3rem] rounded-full object-cover ring-2 ring-[#53829C] shadow-md"
           src={Avatar}
           alt=""
         />
         <div
           onClick={() => dispatch(setSmallDeviceChatPeople())}
-          className="custom500p-2 p-1 rounded-full bg-[#9746ff] hover:bg-[#8e3df8] cursor-pointer"
+          className="custom500p-2 p-1 rounded-full bg-[#53829C] hover:bg-[#436a80] cursor-pointer"
         >
           <TbMessageCircle2Filled size={20} className="text-white" />
         </div>
         <div
           onClick={() => dispatch(setclicked_Setting())}
-          className="custom500p-2 p-1 rounded-full cursor-pointer bg-[#9746ff] hover:bg-[#8e3df8]"
+          className="custom500p-2 p-1 rounded-full cursor-pointer bg-[#53829C] hover:bg-[#436a80]"
         >
           <IoMdSettings size={20} className="text-white" />
         </div>
         <div
           onClick={() => dispatch(setopen_notification())}
-          className="custom500p-2 p-1 cursor-pointer items-center justify-center bg-[#9746ff] hover:bg-[#8e3df8] rounded-full shadow-md"
+          className="custom500p-2 p-1 cursor-pointer items-center justify-center bg-[#436a80] hover:bg-[#53829C] rounded-full shadow-md"
         >
           <IoIosNotifications className="cursor-pointer text-white" size={20} />
         </div>

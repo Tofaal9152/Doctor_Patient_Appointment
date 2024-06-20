@@ -24,7 +24,7 @@ const Patient_Registration = () => {
       <h1 className="text-3xl font-semibold text-[#53829C] text-center mb-4">
         Doctor Registration
       </h1>
-      <div className="overflow-y-scroll custom-scrollbar bg-opacity-85  flex flex-col items-center rounded-md border border-[#c5d8e2] shadow-2xl backdrop-filter backdrop-blur-xl space-y-4 p-8">
+      <div className="overflow-y-scroll custom-scrollbar  flex flex-col items-center rounded-md border border-[#c5d8e2] shadow-2xl  bg-opacity-85 backdrop-filter backdrop-blur-xl space-y-4 p-8">
         {/* Profile Image */}
         <div className="flex w-full items-end justify-center space-y-2">
           <img

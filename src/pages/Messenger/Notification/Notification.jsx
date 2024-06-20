@@ -21,7 +21,7 @@ const Notification = () => {
         </h1>
         <div
           onClick={() => dispatch(setopen_notification())}
-          className="duration-500 p-1 cursor-pointer items-center justify-center bg-[#9746ff] rounded-full shadow-md"
+          className="duration-500 p-1 cursor-pointer items-center justify-center bg-[#53829C] rounded-full shadow-md"
         >
           <RiArrowRightDoubleLine
             className="cursor-pointer text-white  duration-300"

@@ -23,7 +23,7 @@ const ChatPeople = () => {
         </div>
       </div>
       {/* Chats */}
-      <div className="relative custom-scrollbar flex flex-col overflow-y-auto h-[78vh] 2xl:h-[82vh] space-y-2 p-1 pb-[16rem]">
+      <div className="relative custom-scrollbar flex flex-col overflow-y-auto h-[78vh] 2xl:h-[82vh] space-y-2 p-1">
         {messageContainer.map((item, index) => (
           <div
             key={index}
@@ -60,7 +60,7 @@ const ChatPeople = () => {
             </div>
             <div className="flex flex-col space-y-1 items-end">
               <div className="time text-[#7C8092] text-xs">{item.time}</div>
-              <div className="flex items-center justify-center bg-[#9746ff] w-[1rem] h-[1rem] rounded-full mx-auto">
+              <div className="flex items-center justify-center bg-[#53829C] w-[1rem] h-[1rem] rounded-full mx-auto">
                 <p className="text-white text-xs">1</p>
               </div>
             </div>

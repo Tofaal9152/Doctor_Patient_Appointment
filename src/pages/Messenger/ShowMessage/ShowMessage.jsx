@@ -29,7 +29,7 @@ const MessageContainer = () => {
       <div className="dark:bg-[#1e2021] flex items-center custom500:px-[3rem] justify-between p-[0.7rem] px-[1.6rem] lg:px-[5rem] shadow-md bg-white dark:border-solid dark:border-[1px] dark:border-gray-800">
         <div className="flex justify-start items-start space-x-3">
           <img
-            className="w-[1.7rem] h-[1.7rem] ring-2 ring-[#8e3df8] rounded-full object-cover"
+            className="w-[1.7rem] h-[1.7rem] ring-2 ring-[#53829C] rounded-full object-cover"
             src={Avatar}
             alt="User Avatar"
           />
@@ -43,13 +43,13 @@ const MessageContainer = () => {
         </div>
         <div className="flex space-x-3 md:space-x-6 lg:space-x-8">
           <div className="flex items-center justify-center space-x-6 lg:space-x-9">
-            <FaPhone className="text-[#9746ff] cursor-pointer" size={20} />
+            <FaPhone className="text-[#53829C] cursor-pointer" size={20} />
             <IoIosVideocam
-              className="text-[#9746ff] cursor-pointer"
+              className="text-[#53829C] cursor-pointer"
               size={20}
             />
             <HiDotsVertical
-              className="text-[#9746ff] cursor-pointer"
+              className="text-[#53829C] cursor-pointer"
               size={20}
             />
           </div>
@@ -58,7 +58,7 @@ const MessageContainer = () => {
             className="hidden md:block p-2 cursor-pointer items-center justify-center bg-white rounded-full shadow-md dark:bg-[#373737]"
           >
             <IoIosNotifications
-              className="cursor-pointer text-[#9746ff] hover:text-[#8854cc] "
+              className="cursor-pointer text-[#53829C] hover:text-[#8854cc] "
               size={25}
             />
           </div>

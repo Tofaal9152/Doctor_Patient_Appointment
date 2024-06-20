@@ -8,6 +8,7 @@ const Navbar = () => {
   // state
   const navigate = useNavigate();
   return (
+    
     <nav className={`w-full flex justify-between items-center`}>
       <img className="w-[4rem] cursor-pointer" src={logo} alt="" />
       {/* pc */}

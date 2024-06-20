@@ -47,7 +47,7 @@ const TypeMessage = () => {
           )}
         </div>
         {/* Send Button */}
-        <div className="cursor-pointer p-2 rounded-full bg-[#9746ff] hover:bg-[#8e3df8]">
+        <div className="cursor-pointer p-2 rounded-full bg-[#53829C] hover:bg-[#4b758b]">
           <IoIosSend className="text-white" size={22} />
         </div>
       </div>
