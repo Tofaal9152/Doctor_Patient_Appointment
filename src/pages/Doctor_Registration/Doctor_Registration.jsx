@@ -21,7 +21,7 @@ const Patient_Registration = () => {
       style={{ backgroundImage: `url(${backgroundImage})` }}
       className="interfont flex flex-col items-center justify-center h-screen bg-cover"
     >
-      <h1 className="text-3xl font-semibold text-[#4ec0f1] text-center mb-4">
+      <h1 className="text-3xl font-semibold text-[#53829C] text-center mb-4">
         Doctor Registration
       </h1>
       <div className="overflow-y-scroll custom-scrollbar bg-opacity-85  flex flex-col items-center rounded-md border border-[#c5d8e2] shadow-2xl backdrop-filter backdrop-blur-xl space-y-4 p-8">

@@ -205,7 +205,7 @@
 
 .custom-gradient {
   position: relative;
-  background: linear-gradient(to right, #ec4899, #a855f7, #3404ab);
+  background: linear-gradient(to right, #53829C, #68A1BF, #A0CDEB);
   z-index: 1;
   transition: 0.2s all;
 }
@@ -226,12 +226,13 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background: linear-gradient(to left, #ec4899, #a855f7, #3404ab);
+  background: linear-gradient(to left, #53829C, #68A1BF, #A0CDEB);
   z-index: -1;
   transition: opacity 0.5s linear;
   opacity: 0;
   border-radius: 0.5rem;
 }
+
 .custom-gradient:hover::before {
   opacity: 1;
 }

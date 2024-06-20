@@ -58,7 +58,7 @@ const Patient_Registration = () => {
                 type="text"
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
-                {...register("Name")}
+                {...register("Name", { required: true })}
               />
               <label
                 htmlFor="floating_standard"
@@ -73,7 +73,7 @@ const Patient_Registration = () => {
                 type="number"
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
-                {...register("Age")}
+                {...register("Age", { required: true })}
               />
               <label
                 htmlFor="floating_standard"
@@ -132,7 +132,10 @@ const Patient_Registration = () => {
                 type="email"
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
-                {...register("Email")}
+                {...register("Email", {
+                  required: true,
+                  pattern: /^\S+@\S+$/i,
+                })}
               />
               <label
                 htmlFor="floating_standard"
@@ -147,7 +150,7 @@ const Patient_Registration = () => {
                 type="password"
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
-                {...register("Password")}
+                {...register("Password", { required: true })}
               />
               <label
                 htmlFor="floating_standard"
