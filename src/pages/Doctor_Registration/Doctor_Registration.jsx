@@ -44,6 +44,7 @@ const Patient_Registration = () => {
           <img
             className=" object-cover w-[4.5rem] h-[4.5rem] rounded-full ring-2 ring-[#53829C] cursor-pointer"
             src={image}
+            {...register("Avat9er")}
             alt="Avatar"
           />
           <div className="absolute bottom-0 right-0">

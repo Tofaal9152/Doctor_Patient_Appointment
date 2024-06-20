@@ -4,6 +4,14 @@ import { LuCamera } from "react-icons/lu";
 
 const Profile = () => {
   const [image, setImage] = useState(Avater);
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "Md Tofaal Ahmed",
+    age: "20",
+    gender: "Male",
+    phone: "01732-243-108",
+    email: "tofaal9152@gmail.com",
+  });
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -14,6 +22,18 @@ const Profile = () => {
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const toggleEditMode = () => {
+    setIsEditing((prev) => !prev);
   };
 
   return (
@@ -45,52 +65,55 @@ const Profile = () => {
           <div className="grid grid-rows-3 w-[30rem] grid-cols-1 gap-2">
             <div>
               <label
-                htmlFor="first_name"
+                htmlFor="name"
                 className="block mb-2 text-sm font-md font-semibold text-gray-900"
               >
                 Patient Name
               </label>
               <input
                 type="text"
-                id="first_name"
-                value="Md Tofaal Ahmed"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
                 className="bg-gray-50 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5"
-                placeholder="John"
-                required
+                readOnly={!isEditing}
               />
             </div>
 
             <div className="flex gap-2">
               <div className="">
                 <label
-                  htmlFor="Age"
+                  htmlFor="age"
                   className="block mb-2 text-sm font-md font-semibold text-gray-900"
                 >
                   Age
                 </label>
                 <input
                   type="tel"
-                  id="phone"
+                  id="age"
+                  name="age"
+                  value={formData.age}
+                  onChange={handleChange}
                   className="bg-gray-50 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5"
-                  placeholder="123-45-678"
-                  value="20"
-                  required
+                  readOnly={!isEditing}
                 />
               </div>
               <div className="">
                 <label
-                  htmlFor="Age"
+                  htmlFor="gender"
                   className="block mb-2 text-sm font-md font-semibold text-gray-900"
                 >
                   Gender
                 </label>
                 <input
-                  type="tel"
-                  id="phone"
+                  type="text"
+                  id="gender"
+                  name="gender"
+                  value={formData.gender}
+                  onChange={handleChange}
                   className="bg-gray-50 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5"
-                  placeholder="123-45-678"
-                  value="Male"
-                  required
+                  readOnly={!isEditing}
                 />
               </div>
               <div>
@@ -103,11 +126,11 @@ const Profile = () => {
                 <input
                   type="tel"
                   id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
                   className="bg-gray-50 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5"
-                  placeholder="123-45-678"
-                  value="01732-243-108"
-                  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                  required
+                  readOnly={!isEditing}
                 />
               </div>
             </div>
@@ -122,16 +145,20 @@ const Profile = () => {
               <input
                 type="email"
                 id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 className="bg-gray-50 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5"
-                placeholder="tofaal9152@gmail.com"
-                value="tofaal9152@gmail.com"
-                required
+                readOnly={!isEditing}
               />
             </div>
 
             <div className="flex items-center justify-center">
-              <div className="bg-[#53829C] hover:bg-[#497791] rounded-md px-2 py-1 cursor-pointer hover:scale-105 duration-300 text-md font-semibold text-white">
-                Update profile
+              <div
+                onClick={toggleEditMode}
+                className="bg-[#53829C] hover:bg-[#497791] rounded-md px-2 py-1 cursor-pointer hover:scale-105 duration-300 text-md font-semibold text-white"
+              >
+                {isEditing ? "Save profile" : "Update profile"}
               </div>
             </div>
           </div>
