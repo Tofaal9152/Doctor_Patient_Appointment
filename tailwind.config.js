@@ -20,6 +20,8 @@ export default {
         // => @media (min-width: 923px) { ... }
         'custom500': '500px',
         // => @media (min-width: 923px) { ... }
+        'custom1200': '1200px',
+        // => @media (min-width: 923px) { ... }
 
       },
     },

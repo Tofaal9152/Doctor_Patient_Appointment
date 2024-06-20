@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Left_Sidebar = () => {
   const navigate =useNavigate()
   return (
-    <div className="h-screen glass p-4">
+    <div className={`h-screen glass p-4`}>
       <div className="flex flex-col">
         <div className="bg-white cursor-pointer hover:scale-105 duration-300 bg-opacity-20 backdrop-blur-md rounded-md p-6 shadow-md">
           <span

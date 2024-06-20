@@ -3,14 +3,22 @@ import React, { useState } from "react";
 import logo from "../../../assets/doctor_Logo.png";
 // From React-Router-Dom
 import { useNavigate } from "react-router-dom";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { useDispatch } from "react-redux";
+import { setOpen_doctor_sidebar } from "../../../Redux/counterSlice";
 
 const Navbar = () => {
   // state
+  const dispatch =useDispatch()
   const navigate = useNavigate();
   return (
-    
     <nav className={`w-full flex justify-between items-center`}>
-      <img className="w-[4rem] cursor-pointer" src={logo} alt="" />
+      <div className="flex items-center justify-start space-x-2">
+        <div onClick={()=>{dispatch(setOpen_doctor_sidebar())}} className="p-2 glass border hover:scale-105 duration-300 border-[#497791] rounded-full cursor-pointer md:hidden block ">
+          <GiHamburgerMenu size={17} className="text-[#497791]" />
+        </div>
+        <img className="w-[4rem] cursor-pointer" src={logo} alt="" />
+      </div>
       {/* pc */}
       <div className="flex items-center space-x-2">
         <div
