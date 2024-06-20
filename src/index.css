@@ -3,7 +3,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+.glass-bg {
+    background-color: rgba(243, 244, 246, 0.9); /* Base color with transparency */
+    backdrop-filter: blur(10px); /* Blur effect */
+    -webkit-backdrop-filter: blur(10px); /* Blur effect for older browsers */
+    border-radius: 10px; /* Optional: Rounded corners */
+    padding: 20px; /* Optional: Adjust padding as needed */
+}
 .fontPoppin {
   font-family: "Poppins", sans-serif;
 }
@@ -59,7 +65,7 @@
     #9dedf0 12.19%,
     #7de7eb 29.82%,
     #5ce1e6 51.94%,
-    #33bbcf 90.29%
+    #0ED3CF 90.29%
   );
 }
 
@@ -88,10 +94,10 @@
     #14101d 95.11%
   );
 }
-
-.bg-discount-gradient {
-  background: linear-gradient(125.17deg, #272727 0%, #11101d 100%);
+.bg-gray-gradient2 {
+    background: linear-gradient(144deg, rgba(255, 255, 255, 0) -341.94%, #E2EBF0 95.11%);
 }
+
 
 .box-shadow {
   box-shadow: 0px 20px 100px -10px rgba(66, 71, 91, 0.1);
@@ -160,7 +166,7 @@
 
 .glass {
   /* background: rgb(154 174 233 / 11%); */
-  background:#A9A9A9;
+  background:white;
   
   
 }

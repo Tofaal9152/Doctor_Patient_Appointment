@@ -16,7 +16,7 @@ const LandingPage = () => {
   return (
     <div
       className="shadow-xl interfont w-full h-screen overflow-hidden object-cover bg-left z-0 bg-[#f7f7f7]"
-      // style={{ backgroundImage: `url(${backgroundImage})` }}
+      style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <div className="shadow-md w-full sticky top-0 glass z-10 pb-2">
         <div className={`${style.paddingX} ${style.flexCenter}`}>

@@ -3,7 +3,7 @@ import Avater from "../../../assets/doctor_Logo.png";
 import { Doctor_Appointment } from "../../../constants";
 import Modal from "./Modal/Modal";
 
-const Available_Doctor = () => {
+const Medical_Report = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -48,4 +48,4 @@ const Available_Doctor = () => {
   );
 };
 
-export default Available_Doctor;
+export default Medical_Report;

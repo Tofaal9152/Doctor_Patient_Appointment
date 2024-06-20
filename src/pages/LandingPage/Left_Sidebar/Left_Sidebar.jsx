@@ -4,15 +4,15 @@ import { useNavigate } from "react-router-dom";
 const Left_Sidebar = () => {
   const navigate =useNavigate()
   return (
-    <div className={`h-screen glass p-4`}>
-      <div className="flex flex-col " >
-        <div className="bg-white cursor-pointer border hover:scale-105 duration-300 bg-opacity-20 backdrop-blur-md rounded-md px-3 py-2 mb-1 shadow-md">
-          <span
-            onClick={() => {
-              navigate("/");
-            }}
-            className="text-center text-md font-semibold text-[#2a5c83]"
-          >
+    <div className={`h-screen bg-gray-gradient2 p-4 border-r`}>
+      <div className="flex flex-col ">
+        <div
+          onClick={() => {
+            navigate("/");
+          }}
+          className="bg-transparent cursor-pointer border hover:scale-105 duration-300 bg-opacity-20 backdrop-blur-md rounded-md px-3 py-2 mb-1 shadow-md"
+        >
+          <span className="text-center text-md font-semibold text-[#2a5c83]">
             Available Doctor
           </span>
         </div>
@@ -21,17 +21,20 @@ const Left_Sidebar = () => {
             My Appointment
           </span>
         </div>
-        <div className="bg-white cursor-pointer border hover:scale-105 duration-300 bg-opacity-20 backdrop-blur-md rounded-md px-3 py-2 mb-1 shadow-md">
-          <span
-            onClick={() => {
-              navigate("/messages");
-            }}
-            className="text-md font-semibold text-[#2a5c83]"
-          >
-            Messages
-          </span>
+        <div
+          onClick={() => {
+            navigate("/messages");
+          }}
+          className="bg-white cursor-pointer border hover:scale-105 duration-300 bg-opacity-20 backdrop-blur-md rounded-md px-3 py-2 mb-1 shadow-md"
+        >
+          <span className="text-md font-semibold text-[#2a5c83]">Messages</span>
         </div>
-        <div className="bg-white cursor-pointer border hover:scale-105 duration-300 bg-opacity-20 backdrop-blur-md rounded-md px-3 py-2 mb-1 shadow-md">
+        <div
+          onClick={() => {
+            navigate("/medicalreport");
+          }}
+          className="bg-white cursor-pointer border hover:scale-105 duration-300 bg-opacity-20 backdrop-blur-md rounded-md px-3 py-2 mb-1 shadow-md"
+        >
           <span className="text-md font-semibold text-[#2a5c83]">
             Medical Report
           </span>
