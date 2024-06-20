@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import backgroundImage from "../../assets/bgImage.jpg";
-import Avatar from "../../assets/doctor_Logo.png";
+import Avater from "../../assets/doctor_Logo.png";
 import { MdImage } from "react-icons/md";
 import { specialization } from "../../constants";
-
+import { LuCamera } from "react-icons/lu";
 const Patient_Registration = () => {
+  
   const {
     register,
     handleSubmit,
@@ -14,6 +15,18 @@ const Patient_Registration = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+  };
+  const [image, setImage] = useState(Avater);
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setImage(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -26,22 +39,28 @@ const Patient_Registration = () => {
       </h1>
       <div className="overflow-y-scroll custom-scrollbar  flex flex-col items-center rounded-md border border-[#c5d8e2] shadow-2xl  bg-opacity-85 backdrop-filter backdrop-blur-xl space-y-4 p-8">
         {/* Profile Image */}
-        <div className="flex w-full items-end justify-center space-y-2">
+
+        <div className="object-cover relative flex  items-end justify-center space-y-2">
           <img
-            className="object-cover w-[4.5rem] h-[4.5rem] rounded-full ring-2 ring-[#53829C] cursor-pointer"
-            src={Avatar}
+            className=" object-cover w-[4.5rem] h-[4.5rem] rounded-full ring-2 ring-[#53829C] cursor-pointer"
+            src={image}
             alt="Avatar"
           />
-          <div className="relative">
-            <label htmlFor="fileInput" className="cursor-pointer">
-              <MdImage className="text-[#53829C]" />
-            </label>
-            <input
-              type="file"
-              id="fileInput"
-              className="opacity-0 hidden absolute top-0 left-0 w-full h-full cursor-pointer"
-              {...register("avatar")} // Register file input for form data
-            />
+          <div className="absolute bottom-0 right-0">
+            <div className="relative z-10">
+              <label htmlFor="fileInput" className="cursor-pointer">
+                <div className="p-1 bg-[#53829C] rounded-full">
+                  <LuCamera size={20} className=" text-white" />
+                </div>
+              </label>
+              <input
+                type="file"
+                id="fileInput"
+                className="opacity-0 hidden absolute top-0 left-0 w-full h-full cursor-pointer"
+                {...register("Avater")}
+                onChange={handleImageChange}
+              />
+            </div>
           </div>
         </div>
 

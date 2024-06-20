@@ -8,14 +8,14 @@ const Available_Doctor = () => {
 
   return (
     <Fragment>
-      <div className=" w-full h-screen overflow-y-scroll custom-scrollbar p-3">
+      <div className=" bg-[#c9c9c9]  w-full h-screen overflow-y-scroll custom-scrollbar p-3">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 custom1200:grid-cols-4 gap-3">
           {Doctor_Appointment.map((item, index) => {
             return (
               <div
                 key={index}
                 onClick={() => setShowModal(true)}
-                className="feedback-card hover:text-white flex glass flex-col items-center text-center bg-white rounded-xl shadow-xl p-5 transform transition-transform hover:scale-105 hover:shadow-xl cursor-pointer duration-300"
+                className="bg-[#c9c9c9] flex glass flex-col items-center text-center  rounded-xl shadow-xl p-5 transform transition-transform hover:scale-105 hover:shadow-xl cursor-pointer duration-300"
               >
                 <img
                   className="w-20 h-20 rounded-full object-cover border-2 border-[#53829C]"
