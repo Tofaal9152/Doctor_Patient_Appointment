@@ -33,7 +33,7 @@ const Setting = () => {
       {/* back */}
       <div
         onClick={() => dispatch(setclicked_Setting())}
-        className="p-2 top-3 z-10 left-3 rounded-full bg-[#53829C] items-start justify-start flex absolute cursor-pointer"
+        className="p-2 top-3 z-10 left-3 rounded-full bg-[#9746ff] items-start justify-start flex absolute cursor-pointer"
       >
         <IoMdArrowRoundBack size={20} className="text-white" />
       </div>
@@ -43,7 +43,7 @@ const Setting = () => {
           <img
             src={profileImage}
             alt="Avatar"
-            className="w-[4rem] h-[4rem] rounded-full object-cover ring-2 ring-[#53829C] shadow-md"
+            className="w-[4rem] h-[4rem] rounded-full object-cover ring-2 ring-[#8e3df8] shadow-md"
           />
           <CiExport
             className="text-voilet-800  cursor-pointer"
@@ -67,7 +67,7 @@ const Setting = () => {
 
       {/* Settings */}
       <div className="flex h-full flex-col items-center  relative  rounded-lg w-full space-y-4">
-        <hr className="w-full h-[1px] border-none bg-[#53829C]" />
+        <hr className="w-full h-[1px] border-none bg-[#9746ff]" />
         {/* Dark Mode */}
         <div className="flex items-center justify-between w-full duration-500 cursor-pointer">
           <h1 className="text-md font-semibold text-gray-800 dark:text-white">
@@ -75,16 +75,16 @@ const Setting = () => {
           </h1>
           {Dark_Mode_On_Off ? (
             <BiSolidToggleRight
-              onClick={() => {
+              onClick={() => {                
                 setDark_Mode_On_Off((e) => !e);
                 dispatch(setDarkMode());
               }}
               size={35}
-              className="text-[#53829C]"
+              className="text-[#9746ff]"
             />
           ) : (
             <BiSolidToggleLeft
-              onClick={() => {
+              onClick={() => {                
                 setDark_Mode_On_Off((e) => !e);
                 dispatch(setDarkMode());
               }}
@@ -102,7 +102,7 @@ const Setting = () => {
             <BiSolidToggleRight
               onClick={() => setactive_On_Off((e) => !e)}
               size={35}
-              className="text-[#53829C]"
+              className="text-[#9746ff]"
             />
           ) : (
             <BiSolidToggleLeft
@@ -119,14 +119,14 @@ const Setting = () => {
             Change language
           </h1>
           <div>
-            <select className="w-full border border-gray-300 rounded px-2 py-1 text-xs outline-none bg-[#53829C] text-white font-semibold">
-              <option className="bg-[#53829C] font-medium  " value="1">
+            <select className="w-full border border-gray-300 rounded px-2 py-1 text-xs outline-none bg-[#9746ff] text-white font-semibold">
+              <option className="bg-[#9746ff] font-medium  " value="1">
                 Bangla
               </option>
-              <option className="bg-[#53829C] font-medium  " value="2">
+              <option className="bg-[#9746ff] font-medium  " value="2">
                 English
               </option>
-              <option className="bg-[#53829C] font-medium  " value="3">
+              <option className="bg-[#9746ff] font-medium  " value="3">
                 Hindi
               </option>
             </select>
@@ -157,7 +157,7 @@ const Setting = () => {
         </div>
         {/* Log Out */}
         <div className="flex items-center justify-end w-full absolute bottom-0">
-          <button className="px-2 font-semibold py-1 text-[#53829C] border border-[#53829C]  rounded hover:bg-[#436a80] hover:text-white duration-300 focus:outline-none">
+          <button className="px-2 font-semibold py-1 text-[#9746ff] border border-[#9746ff]  rounded hover:bg-[#8e3df8] hover:text-white duration-300 focus:outline-none">
             Log out
           </button>
         </div>

@@ -18,6 +18,8 @@ import Confirmed_Appointments from "./pages/Doctor_Dashboard/Confirmed Appointme
 import Medical_Records from "./pages/Doctor_Dashboard/Medical Records/Medical_Records.jsx";
 import Doctor_profile from "./pages/Doctor_Dashboard/Profile/Profile.jsx";
 import Doctor_Registration from "./pages/Doctor_Registration/Doctor_Registration.jsx";
+// login
+import Login from "./pages/LOG_IN/Login.jsx";
 
 import Messenger from "./pages/Messenger/Messenger.jsx";
 // redux
@@ -29,7 +31,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Landing_page/>,
+    element: <Landing_page />,
   },
   {
     path: "/patient",
@@ -90,6 +92,10 @@ const router = createBrowserRouter([
   {
     path: "/patientregistration",
     element: <Patient_Registration />,
+  },
+  {
+    path: "/Login",
+    element: <Login />,
   },
 ]);
 

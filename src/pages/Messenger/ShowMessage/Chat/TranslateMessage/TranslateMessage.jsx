@@ -12,12 +12,10 @@ const Change_Language = () => {
           key={index}
           className=" hover:bg-violet-300 dark:hover:bg-violet-700 cursor-pointer p-1 flex items-center justify-start space-x-1 rounded-md transition-colors duration-200 ease-in-out w-full"
         >
-          <span className="p-1 rounded-full bg-[##53829C]">
+          <span className="p-1 rounded-full bg-[#9746ff]">
             <FaGlobeAmericas className="text-white " size={15} />
           </span>
-          <h1 className="text-xs font-bold text-gray-700 dark:text-gray-200">
-            {item.language}
-          </h1>
+          <h1 className="text-xs font-bold text-gray-700 dark:text-gray-200">{item.language}</h1>
         </div>
       ))}
     </div>

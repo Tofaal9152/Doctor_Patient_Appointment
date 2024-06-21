@@ -48,7 +48,7 @@ const Landing_Page = () => {
           </div>
         </div>
         <div
-          onClick={() => navigate("/doctorregistration")}
+          onClick={() => navigate("/Login")}
           className="bg-[#76c3ed] w-full space-x-1 flex items-center justify-center hover:bg-[#7dcefa] rounded-md px-3 py-2 cursor-pointer text-md font-semibold text-white"
         >
           <span>Log In</span>

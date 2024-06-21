@@ -45,7 +45,7 @@ const SmallDeviceChatPeople = () => {
             </div>
             <div className="flex flex-col space-y-1 items-end">
               <div className="time text-[#7C8092] text-xs">{item.time}</div>
-              <div className="flex items-center justify-center bg-[#53829C] w-[1rem] h-[1rem] rounded-full mx-auto">
+              <div className="flex items-center justify-center bg-[#9746ff] w-[1rem] h-[1rem] rounded-full mx-auto">
                 <p className="text-white text-xs">1</p>
               </div>
             </div>

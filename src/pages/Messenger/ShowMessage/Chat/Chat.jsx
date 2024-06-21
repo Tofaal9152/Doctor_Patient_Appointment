@@ -1,10 +1,21 @@
 import React, { useState } from "react";
 import { RiCheckDoubleFill } from "react-icons/ri";
 import { chating_between } from "../../../../constants";
+import TranslateMessage from "./TranslateMessage/TranslateMessage"; // Adjusted import path
 
 const MeAndFriendConversation = () => {
+  const [messageToTranslate, setMessageToTranslate] = useState(null);
+
+  const toggleTranslateMessage = (message) => {
+    if (messageToTranslate === message) {
+      setMessageToTranslate(null); // Toggle off if already selected
+    } else {
+      setMessageToTranslate(message); // Toggle on if not selected
+    }
+  };
+
   return (
-    <div className=" px-2 lg:px-[4rem] xl:px-[7rem] hide_scroll pt-[1rem] flex flex-col overflow-y-auto h-full space-y-5 bg-transparent dark:bg-[#1e2021]">
+    <div className=" px-2 lg:px-[4rem] xl:px-[7rem] hide_scroll pt-[1rem] flex flex-col overflow-y-auto h-full space-y-5 bg-[#F5F5F7] dark:bg-[#1e2021]">
       {chating_between.map((item, index) => (
         <div key={index} className="">
           {/* ME */}
@@ -14,9 +25,7 @@ const MeAndFriendConversation = () => {
                 {item.MyText}
               </p>
               <div className="flex items-center justify-between">
-                <p className="text-xs text-[#7C8092] dark:text-gray-300">
-                  {item.MyTime}
-                </p>
+                <p className="text-xs text-[#7C8092] dark:text-gray-300">{item.MyTime}</p>
                 <RiCheckDoubleFill className="text-[#30323E]" />
               </div>
             </div>
@@ -33,6 +42,19 @@ const MeAndFriendConversation = () => {
               <div className="flex items-center justify-between">
                 <p className="text-xs text-[#7C8092]">{item.FriendMyTime}</p>
                 <RiCheckDoubleFill className="text-[#30323E]" />
+              </div>
+              <div className="flex flex-col space-y-1 justify-start items-start mt-1">
+                <button
+                  className="text-xs text-gray-500 cursor-pointer hover:text-gray-900 dark:hover:text-white"
+                  onClick={() => toggleTranslateMessage(item.FriendText)}
+                >
+                  {messageToTranslate === item.FriendText
+                    ? "Hide translation"
+                    : "Translate message"}
+                </button>
+                {messageToTranslate === item.FriendText && (
+                  <TranslateMessage message={item.FriendText} />
+                )}
               </div>
             </div>
           </div>
