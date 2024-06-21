@@ -29,15 +29,14 @@ const LandingPage = () => {
         <div className="md:block hidden">
           <Left_Sidebar />
         </div>
-
+        <div
+          className={`${
+            Open_doctor_sidebar ? "left-0" : "left-[-45rem]"
+          } absolute md:hidden overflow-y-hidden  flex flex-col glass h-screen w-[full]  sidebar duration-500 z-10  `}
+        >
+          <Left_Sidebar />
+        </div>
         <Outlet />
-      </div>
-      <div
-        className={`${
-          Open_doctor_sidebar ? "left-0" : "left-[-45rem]"
-        } absolute md:hidden  top-[4rem] flex flex-col glass h-screen w-[full]  sidebar duration-500  `}
-      >
-        <Left_Sidebar />
       </div>
     </div>
   );

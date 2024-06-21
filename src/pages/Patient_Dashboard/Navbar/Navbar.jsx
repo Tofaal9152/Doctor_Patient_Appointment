@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import logo from "../../../assets/doctor_Logo.png";
 // From React-Router-Dom
 import { useNavigate } from "react-router-dom";
+// icons
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useDispatch } from "react-redux";
 import { setOpen_doctor_sidebar } from "../../../Redux/counterSlice";
 import { IoLogInOutline } from "react-icons/io5";
 
 const Navbar = () => {
-  // state
   const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
@@ -33,7 +33,6 @@ const Navbar = () => {
         />
       </div>
       {/*  */}
-
       <div className="bg-[#76c3ed] space-x-1 flex items-center justify-center hover:bg-[#7dcefa] rounded-md px-3 py-2 cursor-pointer text-md font-semibold text-white">
         <span>Log out</span>
         <div>
