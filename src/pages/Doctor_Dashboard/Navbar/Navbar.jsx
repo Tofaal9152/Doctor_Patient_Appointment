@@ -25,14 +25,14 @@ const Navbar = () => {
         </div>
         <img
           onClick={() => {
-            navigate("/profile");
+            navigate("/doctor/profile");
           }}
           className="object-cover w-[3rem] h-[3rem] rounded-full ring-2 mt-3 ring-[#53829C] cursor-pointer"
           src={logo}
           alt="Profile"
         />
       </div>
-      {/* pc */}
+      {/*  */}
 
       <div className="bg-[#76c3ed] space-x-1 flex items-center justify-center hover:bg-[#7dcefa] rounded-md px-3 py-2 cursor-pointer text-md font-semibold text-white">
         <span>Log out</span>

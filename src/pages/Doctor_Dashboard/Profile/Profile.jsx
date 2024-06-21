@@ -3,16 +3,18 @@ import Avater from "../../../assets/doctor_Logo.png";
 import { LuCamera } from "react-icons/lu";
 import { IoSave } from "react-icons/io5";
 
-
 const Profile = () => {
   const [image, setImage] = useState(Avater);
-  const [isEditing, setIsEditing] = useState(true); // Start with true to enable editing by default
+  const [isEditing, setIsEditing] = useState(true); 
   const [formData, setFormData] = useState({
     name: "Md Tofaal Ahmed",
-    age: "20",
+    specialization: "Nephrology",
     gender: "Male",
     phone: "01732-243-108",
     email: "tofaal9152@gmail.com",
+    availableTimes: "9 AM - 5 PM",
+    availableDays: "Monday to Friday",
+    description: "Experienced nephrologist with over 10 years of practice.",
   });
 
   const handleImageChange = (event) => {
@@ -35,13 +37,16 @@ const Profile = () => {
   };
 
   return (
-    <div className="w-full h-screen flex justify-center ">
-      <form className="mt-10">
-        <h1 className="text-3xl font-bold text-center mb-6">Patient Profile</h1>
-        <div className="flex flex-col items-center p-3 px-4 space-y-2">
-          <div className="object-cover relative flex items-end justify-center space-y-2">
+    <div className="w-full h-screen overflow-y-scroll flex flex-col items-center justify-center">
+      <form className="m-[7rem]">
+
+        <h1 className="text-[#53829C] text-3xl font-bold text-center mb-6">
+          Your Profile
+        </h1>
+        <div className="flex flex-col items-center space-y-2">
+          <div className="object-cover relative flex items-end justify-center">
             <img
-              className="object-cover w-24 h-24 rounded-full ring-2 ring-[#53829C] cursor-pointer"
+              className="object-cover w-20 h-20 rounded-full ring-2 ring-[#53829C] cursor-pointer"
               src={image}
               alt="Avatar"
             />
@@ -61,13 +66,13 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          <div className="grid grid-rows-3 w-[30rem] grid-cols-1 gap-4 mt-4">
+          <div className="grid grid-rows-3 w-[22rem] sm:w-[30rem] grid-cols-1 gap-4 mt-4">
             <div>
               <label
                 htmlFor="name"
                 className="block  mb-2 text-sm font-medium text-gray-900"
               >
-                Patient Name
+                Your Name
               </label>
               <input
                 type="text"
@@ -83,18 +88,18 @@ const Profile = () => {
             </div>
 
             <div className="flex gap-4">
-              <div className="">
+              <div>
                 <label
-                  htmlFor="age"
+                  htmlFor="specialization"
                   className="block mb-2 text-sm font-medium text-gray-900"
                 >
-                  Age
+                  Specialization
                 </label>
                 <input
-                  type="tel"
-                  id="age"
-                  name="age"
-                  value={formData.age}
+                  type="text"
+                  id="specialization"
+                  name="specialization"
+                  value={formData.specialization}
                   onChange={handleChange}
                   className={`bg-gray-100 border-2 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 ${
                     isEditing ? "" : "cursor-not-allowed"
@@ -102,7 +107,7 @@ const Profile = () => {
                   readOnly={!isEditing}
                 />
               </div>
-              <div className="">
+              <div>
                 <label
                   htmlFor="gender"
                   className="block mb-2 text-sm font-medium text-gray-900"
@@ -161,6 +166,65 @@ const Profile = () => {
                 readOnly={!isEditing}
               />
             </div>
+            <div className="flex gap-4 items-center justify-between">
+              <div>
+                <label
+                  htmlFor="availableTimes"
+                  className="block mb-2 text-sm font-medium text-gray-900"
+                >
+                  Available Times
+                </label>
+                <input
+                  type="text"
+                  id="availableTimes"
+                  name="availableTimes"
+                  value={formData.availableTimes}
+                  onChange={handleChange}
+                  className={`bg-gray-100 border-2 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 ${
+                    isEditing ? "" : "cursor-not-allowed"
+                  }`}
+                  readOnly={!isEditing}
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="availableDays"
+                  className="block mb-2 text-sm font-medium text-gray-900"
+                >
+                  Available Days
+                </label>
+                <input
+                  type="text"
+                  id="availableDays"
+                  name="availableDays"
+                  value={formData.availableDays}
+                  onChange={handleChange}
+                  className={`bg-gray-100 border-2 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 ${
+                    isEditing ? "" : "cursor-not-allowed"
+                  }`}
+                  readOnly={!isEditing}
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="description"
+                className="block mb-2 text-sm font-medium text-gray-900"
+              >
+                Description
+              </label>
+              <textarea
+                id="description"
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+                className={`bg-gray-100 border-2 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 ${
+                  isEditing ? "" : "cursor-not-allowed"
+                }`}
+                readOnly={!isEditing}
+              />
+            </div>
 
             <div className="flex items-center justify-center">
               <div
@@ -173,6 +237,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
+
       </form>
     </div>
   );

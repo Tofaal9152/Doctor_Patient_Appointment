@@ -2,7 +2,6 @@ import { IoLinkOutline } from "react-icons/io5";
 import { BsEmojiSmile } from "react-icons/bs";
 import { FaMicrophone } from "react-icons/fa";
 import { IoIosSend } from "react-icons/io";
-import { RiArrowRightDoubleLine } from "react-icons/ri";
 import Emoji from "emoji-picker-react";
 import React, { useState } from "react";
 
@@ -16,7 +15,7 @@ const TypeMessage = () => {
   };
 
   return (
-    <div className="px-4 flex bottom-0 bg-white w-full p-2 overflow-x-hidden dark:bg-[#1e2021] dark:border-solid dark:border-[1px] dark:border-gray-700">
+    <div className="px-4 flex bg-white w-full p-2  dark:bg-[#1e2021] dark:border-solid dark:border-[1px] dark:border-gray-700">
       <div className="flex justify-center items-center space-x-2 w-full">
         {/* Link Icon */}
         <span className="cursor-pointer p-2 rounded-full hover:bg-gray-100 dark:text-white dark:hover:bg-black">

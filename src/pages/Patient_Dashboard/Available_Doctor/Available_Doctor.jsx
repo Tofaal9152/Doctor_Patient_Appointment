@@ -5,7 +5,11 @@ import Modal from "./Modal/Modal";
 
 const Available_Doctor = () => {
   const [showModal, setShowModal] = useState(false);
-
+  const [selectedDoctor, setselectedDoctor] = useState(null);
+  const handleCardClick = (doctor) => {
+    setselectedDoctor(doctor);
+    setShowModal(true);
+  };
   return (
     <Fragment>
       <div className=" bg-transparent  w-full h-screen overflow-y-scroll custom-scrollbar p-3">
@@ -14,7 +18,7 @@ const Available_Doctor = () => {
             return (
               <div
                 key={index}
-                onClick={() => setShowModal(true)}
+                onClick={() => handleCardClick(item)}
                 className=" hover:bg-[#f2ffff] flex glass flex-col items-center text-center  rounded-xl shadow-xl p-5 transform transition-transform hover:scale-105 hover:shadow-xl cursor-pointer duration-500"
               >
                 <img
@@ -29,13 +33,17 @@ const Available_Doctor = () => {
                 <div className="mt-3 ">
                   <p>
                     Available:{" "}
-                    <span className="font-medium text-sm">{item.availability}</span>
+                    <span className="font-medium text-sm">
+                      {item.availability}
+                    </span>
                   </p>
                   <p>
-                    Hours: <span className="font-medium text-sm">{item.hours}</span>
+                    Hours:{" "}
+                    <span className="font-medium text-sm">{item.hours}</span>
                   </p>
                   <p>
-                    Contact: <span className="font-medium text-sm">{item.contact}</span>
+                    Contact:{" "}
+                    <span className="font-medium text-sm">{item.contact}</span>
                   </p>
                 </div>
               </div>
@@ -43,7 +51,11 @@ const Available_Doctor = () => {
           })}
         </div>
       </div>
-      <Modal isVisible={showModal} onClose={() => setShowModal(false)} />
+      <Modal
+        doctor={selectedDoctor}
+        isVisible={showModal}
+        onClose={() => setShowModal(false)}
+      />
     </Fragment>
   );
 };
