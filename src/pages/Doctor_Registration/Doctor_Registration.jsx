@@ -5,17 +5,20 @@ import Avater from "../../assets/doctor_Logo.png";
 import { MdImage } from "react-icons/md";
 import { specialization } from "../../constants";
 import { LuCamera } from "react-icons/lu";
+import { baseUrl } from "../../constants";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 const Patient_Registration = () => {
-  
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  const [isLoading, setLoading] = useState(true);
+  const navigate = useNavigate();
   const [image, setImage] = useState(Avater);
 
   const handleImageChange = (event) => {
@@ -23,10 +26,76 @@ const Patient_Registration = () => {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setImage(e.target.result);
+        const base64Image = e.target.result;
+        setImage(base64Image);
+        uploadToImgbb(base64Image);
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const uploadToImgbb = async (base64Image) => {
+    try {
+      const formData = new FormData();
+      formData.append("image", base64Image.split(",")[1]); // Remove the data:image/png;base64, part
+      const response = await axios.post(
+        "https://api.imgbb.com/1/upload",
+        formData,
+        {
+          params: {
+            key: "ed67a942812ea90bf6e8f65a6c43c091",
+          },
+        }
+      );
+      console.log(response.data.data.url);
+      setValue("profile_img", response.data.data.url); // Set the img_url field in the form
+    } catch (error) {
+      console.error("Error uploading image to imgbb", error);
+    }
+  };
+
+  const onSubmit = (data) => {
+    if (!("profile_img" in data)) {
+      alert("Please upload your Profile Image");
+      return;
+    }
+    if (data["password1"] !== data["password2"]) {
+      alert("The passwords do not match");
+      return;
+    }
+
+    if (data["available_days"].length == 0) {
+      alert("Please check the available days");
+      return;
+    }
+
+    data["available_days"] = data["available_days"].join("");
+
+    console.log(data);
+    console.log(typeof data);
+
+    fetch(`${baseUrl}/doctors/registration/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        if (res.ok) {
+          // console.log(res.text());
+          return res.text();
+        }
+        return null;
+      })
+      .then((data) => {
+        if (data == null) {
+          alert("Can't create an account with this email");
+          return;
+        }
+        navigate("/doctor-login");
+        console.log(data);
+      });
   };
 
   return (
@@ -44,7 +113,6 @@ const Patient_Registration = () => {
           <img
             className=" object-cover w-[4.5rem] h-[4.5rem] rounded-full ring-2 ring-[#53829C] cursor-pointer"
             src={image}
-            {...register("Avat9er")}
             alt="Avatar"
           />
           <div className="absolute bottom-0 right-0">
@@ -58,7 +126,6 @@ const Patient_Registration = () => {
                 type="file"
                 id="fileInput"
                 className="opacity-0 hidden absolute top-0 left-0 w-full h-full cursor-pointer"
-                {...register("Avater")}
                 onChange={handleImageChange}
               />
             </div>
@@ -74,7 +141,7 @@ const Patient_Registration = () => {
                 type="text"
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
-                {...register("Name", { required: true })}
+                {...register("name", { required: true })}
               />
               <label
                 htmlFor="floating_standard"
@@ -85,40 +152,23 @@ const Patient_Registration = () => {
             </div>
 
             {/* Email + Number*/}
-            <div className="flex flex-col md:flex-row space-x-5">
-              <div className="relative flex z-0">
-                <input
-                  type="email"
-                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                  placeholder=" "
-                  {...register("Email", {
-                    required: true,
-                    pattern: /^\S+@\S+$/i, // Basic email validation
-                  })}
-                />
-                <label
-                  htmlFor="floating_standard"
-                  className="absolute text-sm text-black dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                >
-                  Email
-                </label>
-              </div>
-              <div className="relative flex z-0">
-                <input
-                  type="Number"
-                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                  placeholder=" "
-                  {...register("Number", {
-                    required: true,
-                  })}
-                />
-                <label
-                  htmlFor="floating_standard"
-                  className="absolute text-sm text-black dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                >
-                  Number
-                </label>
-              </div>
+
+            <div className="relative flex z-0">
+              <input
+                type="email"
+                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                placeholder=" "
+                {...register("email", {
+                  required: true,
+                  pattern: /^\S+@\S+$/i, // Basic email validation
+                })}
+              />
+              <label
+                htmlFor="floating_standard"
+                className="absolute text-sm text-black dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >
+                Email
+              </label>
             </div>
 
             {/* Password */}
@@ -127,13 +177,27 @@ const Patient_Registration = () => {
                 type="password"
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
-                {...register("Password", { required: true })}
+                {...register("password1", { required: true })}
               />
               <label
                 htmlFor="floating_standard"
                 className="absolute text-sm text-black dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Password
+              </label>
+            </div>
+            <div className="relative z-0">
+              <input
+                type="password"
+                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                placeholder=" "
+                {...register("password2", { required: true })}
+              />
+              <label
+                htmlFor="floating_standard"
+                className="absolute text-sm text-black dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >
+                Re-type Password
               </label>
             </div>
             {/* Specialization */}
@@ -200,7 +264,7 @@ const Patient_Registration = () => {
                       type="checkbox"
                       id="saturday"
                       name="available_days"
-                      value="Saturday"
+                      value="6"
                       {...register("available_days")}
                     />
                     <label
@@ -216,7 +280,7 @@ const Patient_Registration = () => {
                       type="checkbox"
                       id="sunday"
                       name="available_days"
-                      value="Sunday"
+                      value="0"
                       {...register("available_days")}
                     />
                     <label
@@ -232,7 +296,7 @@ const Patient_Registration = () => {
                       type="checkbox"
                       id="monday"
                       name="available_days"
-                      value="Monday"
+                      value="1"
                       {...register("available_days")}
                     />
                     <label
@@ -250,7 +314,7 @@ const Patient_Registration = () => {
                       type="checkbox"
                       id="tuesday"
                       name="available_days"
-                      value="Tuesday"
+                      value="2"
                       {...register("available_days")}
                     />
                     <label
@@ -266,7 +330,7 @@ const Patient_Registration = () => {
                       type="checkbox"
                       id="wednesday"
                       name="available_days"
-                      value="Wednesday"
+                      value="3"
                       {...register("available_days")}
                     />
                     <label
@@ -282,7 +346,7 @@ const Patient_Registration = () => {
                       type="checkbox"
                       id="Thursday"
                       name="available_days"
-                      value="Thursday"
+                      value="4"
                       {...register("available_days")}
                     />
                     <label
@@ -299,7 +363,7 @@ const Patient_Registration = () => {
                     type="checkbox"
                     id="Friday"
                     name="available_days"
-                    value="Friday"
+                    value="5"
                     {...register("available_days")}
                   />
                   <label
@@ -325,8 +389,8 @@ const Patient_Registration = () => {
                 id="notes"
                 className="outline-none p-3 w-full mt-1 text-sm bg-transparent border-[#53829C] border rounded-md  focus:border-blue-600 focus:ring focus:ring-blue-200 focus:ring-opacity-50 dark:text-gray-400 dark:border-gray-700 dark:bg-transparent"
                 rows={4}
-                placeholder="Enter any additional notes..."
-                {...register("Notes")}
+                placeholder="Write something about you ..."
+                {...register("description")}
               />
             </div>
             {/* Submit */}

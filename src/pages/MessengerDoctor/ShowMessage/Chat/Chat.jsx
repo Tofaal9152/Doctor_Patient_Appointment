@@ -14,9 +14,10 @@ const MeAndFriendConversation = () => {
 
   const loadChats = () => {
     if (chatPeopleId == null) return;
-    let token = loadFromLocalStorage("patient-token");
+    let token = loadFromLocalStorage("doctor-token");
+    console.log(chatPeopleId);
 
-    fetch(`${baseUrl}/patient/message/${chatPeopleId}`, {
+    fetch(`${baseUrl}/doctors/message/${chatPeopleId}`, {
       headers: {
         Authorization: `Token ${token}`,
       },
@@ -37,9 +38,9 @@ const MeAndFriendConversation = () => {
   };
 
   const postText = (myText) => {
-    let token = loadFromLocalStorage("patient-token");
+    let token = loadFromLocalStorage("doctor-token");
 
-    fetch(`${baseUrl}/patient/message/${chatPeopleId}`, {
+    fetch(`${baseUrl}/doctors/message/${chatPeopleId}`, {
       headers: {
         Authorization: `Token ${token}`,
         "Content-Type": "application/json",
@@ -86,7 +87,7 @@ const MeAndFriendConversation = () => {
               <div key={index} className="">
                 {/* ME */}
 
-                {item?.is_patient ? (
+                {!item?.is_patient ? (
                   <div className="My flex justify-end items-start mb-4">
                     <div className="bg-[#E8F3FD] text-white p-3 rounded-lg max-w-[70%] space-y-1 dark:bg-[#6f34bc]">
                       <p className="text-sm text-black leading-relaxed dark:text-white">
@@ -104,7 +105,7 @@ const MeAndFriendConversation = () => {
                   <div className="Friend flex justify-start items-start mb-4 space-x-2">
                     <img
                       className="w-8 h-8 rounded-full object-cover"
-                      src={item?.pat_profile_img}
+                      src={item?.doc_profile_img}
                       alt="Friend"
                     />
                     <div className="bg-white p-3 rounded-lg max-w-[70%] space-y-1 dark:bg-[#323232]">

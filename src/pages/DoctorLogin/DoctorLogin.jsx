@@ -1,34 +1,42 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import backgroundImage from "../../assets/bgImage.jpg";
-import Avater from "../../assets/doctor_Logo.png";
-import { AiFillCamera } from "react-icons/ai";
+import { baseUrl } from "../../constants";
+import { storeInLocalStorage } from "../../utils/localStorage";
+import { useNavigate } from "react-router-dom";
 
-import { LuCamera } from "react-icons/lu";
+const DoctorLogin = () => {
+  const navigate = useNavigate();
 
-const Patient_Registration = () => {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm();
-  const triggerFileInput = () => {
-    document.getElementById("changeImg").click();
-  };
+
   const onSubmit = (data) => {
     console.log(data);
-  };
-  const [image, setImage] = useState(Avater);
 
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setImage(e.target.result);
-      };
-      reader.readAsDataURL(file);
-    }
+    fetch(`${baseUrl}/rest-auth/login/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        alert("Wrong credentials given");
+        return null;
+      })
+      .then((data) => {
+        if (data == null) return;
+
+        storeInLocalStorage("doctor-token", data["key"]);
+        navigate("/doctor");
+      });
   };
 
   return (
@@ -36,7 +44,7 @@ const Patient_Registration = () => {
       style={{ backgroundImage: `url(${backgroundImage})` }}
       className="interfont flex flex-col items-center justify-center h-screen bg-cover"
     >
-      <div className="bg-opacity-65 flex flex-col items-center rounded-md border border-[#c5d8e2] shadow-2xl backdrop-filter backdrop-blur-sm py-3 sm:p-3 space-y-6">
+      <div className="w-[40vw] max-w-[30rem] min-w-[18rem] bg-opacity-65 flex flex-col items-center rounded-md border border-[#c5d8e2] shadow-2xl backdrop-filter backdrop-blur-sm py-3 sm:p-3 space-y-6">
         {/* From */}
         <div className="w-full p-5 sm:p-10">
           <form
@@ -54,7 +62,7 @@ const Patient_Registration = () => {
                   type="email"
                   className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
-                  {...register("Email", {
+                  {...register("email", {
                     required: true,
                     pattern: /^\S+@\S+$/i,
                   })}
@@ -72,7 +80,7 @@ const Patient_Registration = () => {
                   type="password"
                   className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
-                  {...register("Password", { required: true })}
+                  {...register("password", { required: true })}
                 />
                 <label
                   htmlFor="floating_standard"
@@ -99,4 +107,4 @@ const Patient_Registration = () => {
   );
 };
 
-export default Patient_Registration;
+export default DoctorLogin;

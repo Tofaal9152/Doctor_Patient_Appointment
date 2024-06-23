@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 // Landing Page
-import Landing_page from './pages/Landing Page/Landing_Page.jsx'
+import Landing_page from "./pages/LandingPage/Landing_Page.jsx";
 
 // Patient
 import Patient_LandingPage from "./pages/Patient_Dashboard/Patient_LandingPage.jsx";
@@ -19,14 +19,16 @@ import Medical_Records from "./pages/Doctor_Dashboard/Medical Records/Medical_Re
 import Doctor_profile from "./pages/Doctor_Dashboard/Profile/Profile.jsx";
 import Doctor_Registration from "./pages/Doctor_Registration/Doctor_Registration.jsx";
 // login
-import Login from "./pages/LOG_IN/Login.jsx";
+import PatientLogin from "./pages/PatientLogin/PatientLogin.jsx";
 
 import Messenger from "./pages/Messenger/Messenger.jsx";
+import MessengerDoctor from "./pages/MessengerDoctor/MessengerDoctor.jsx";
 // redux
 import { Provider } from "react-redux";
 import store from "./Redux/store.js";
 // Rect-router-dom
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import DoctorLogin from "./pages/DoctorLogin/DoctorLogin.jsx";
 
 const router = createBrowserRouter([
   {
@@ -73,7 +75,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/doctor/messages",
-        element: <Messenger />,
+        element: <MessengerDoctor />,
       },
       {
         path: "/doctor/medicalrecords",
@@ -94,8 +96,12 @@ const router = createBrowserRouter([
     element: <Patient_Registration />,
   },
   {
-    path: "/Login",
-    element: <Login />,
+    path: "/patient-login",
+    element: <PatientLogin />,
+  },
+  {
+    path: "/doctor-login",
+    element: <DoctorLogin />,
   },
 ]);
 

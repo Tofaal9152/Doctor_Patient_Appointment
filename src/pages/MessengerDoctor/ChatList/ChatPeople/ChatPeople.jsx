@@ -16,7 +16,7 @@ const ChatPeople = () => {
   useEffect(() => {
     let token = loadFromLocalStorage("patient-token");
 
-    fetch(`${baseUrl}/patient/chat-people/`, {
+    fetch(`${baseUrl}/doctors/chat-people/`, {
       headers: {
         Authorization: `Token ${token}`,
       },
@@ -31,6 +31,7 @@ const ChatPeople = () => {
       .then((data) => {
         if (data == null) return;
         setLoading(false);
+        console.log(data);
         setMessageContainer(data);
       });
   }, []);

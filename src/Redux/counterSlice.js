@@ -8,7 +8,8 @@ export const counterSlice = createSlice({
         clicked_Setting: false,
         Small_device_Chat_Peopple: false,
         darkMode: false,
-        Open_doctor_sidebar:false
+        Open_doctor_sidebar:false,
+        chatPeopleId: null,
     },
     reducers: {
         
@@ -34,12 +35,16 @@ export const counterSlice = createSlice({
         setOpen_doctor_sidebar: (state) => {
             state.Open_doctor_sidebar = !state.Open_doctor_sidebar;
            
+        },
+
+        setChatPeopleId: (state, action) => {
+            console.log(action);
+            state.chatPeopleId = action.payload;
         }
-        
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { setopen_notification, setclicked_Setting, setSmallDeviceChatPeople, setDarkMode, setOpen_doctor_sidebar } = counterSlice.actions
+export const { setopen_notification, setclicked_Setting, setSmallDeviceChatPeople, setDarkMode, setOpen_doctor_sidebar, setChatPeopleId } = counterSlice.actions
 
 export default counterSlice.reducer

@@ -13,7 +13,7 @@ const Left_Sidebar = () => {
           className="bg-transparent cursor-pointer border hover:scale-105 duration-300 bg-opacity-20 backdrop-blur-md rounded-md px-3 py-2 mb-1 shadow-md"
         >
           <span className="text-center text-md font-semibold text-[#2a5c83]">
-            Available Doctor
+            Available Doctors
           </span>
         </div>
         <div

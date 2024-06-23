@@ -1,4 +1,9 @@
 import Avatar from "../assets/Avatar.jpeg";
+
+export const baseUrl = "http://127.0.0.1:8000";
+
+export const weekDays = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
+
 export const User_Appointments = [
   {
     doctorName: "Md Tofaal Ahmed",
@@ -37,7 +42,6 @@ export const Medical_Reports = [
     date: "2024-06-18",
     time: "02:00 PM",
   },
-
 ];
 
 export const Patient_Appointment = [
@@ -321,7 +325,7 @@ export const Patient_Appointment = [
     appointmentTime: "02:30 PM - 03:00 PM",
     reason: "Follow-up",
   },
-]
+];
 
 export const Doctor_Appointment = [
   {
@@ -777,11 +781,6 @@ export const Translate_to = [
   },
 ];
 export const specialization = [
-  {
-    value: "Specialization",
-    label: "specialization",
-  },
-
   {
     value: "Cardiology",
     label: "Cardiology",

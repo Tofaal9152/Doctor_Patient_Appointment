@@ -34,7 +34,12 @@ const Navbar = () => {
       </div>
       {/*  */}
 
-      <div className="bg-[#76c3ed] space-x-1 flex items-center justify-center hover:bg-[#7dcefa] rounded-md px-3 py-2 cursor-pointer text-md font-semibold text-white">
+      <div
+        className="bg-[#76c3ed] space-x-1 flex items-center justify-center hover:bg-[#7dcefa] rounded-md px-3 py-2 cursor-pointer text-md font-semibold text-white"
+        onClick={() => {
+          navigate("/");
+        }}
+      >
         <span>Log out</span>
         <div>
           <IoLogInOutline size={25} className="" />
