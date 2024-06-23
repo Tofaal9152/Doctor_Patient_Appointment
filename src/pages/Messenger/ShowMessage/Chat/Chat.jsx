@@ -80,52 +80,56 @@ const MeAndFriendConversation = () => {
   return (
     <>
       <div className="mb-[8rem] px-2 lg:px-[4rem] xl:px-[7rem] hide_scroll pt-[1rem] flex flex-col overflow-y-auto h-full space-y-5 bg-[#F5F5F7] dark:bg-[#1e2021]">
-        {!isLoading ? (
-          <>
-            {chattingBetween.map((item, index) => (
-              <div key={index} className="">
-                {/* ME */}
+        <div className="flex w-[50vw] flex-col space-y-4"> 
+          {!isLoading ? (
+            <>
+              {chattingBetween.map((item, index) => (
+                <div key={index} className="">
+                  {/* ME */}
 
-                {item?.is_patient ? (
-                  <div className="My flex justify-end items-start mb-4">
-                    <div className="bg-[#E8F3FD] text-white p-3 rounded-lg max-w-[70%] space-y-1 dark:bg-[#6f34bc]">
-                      <p className="text-sm text-black leading-relaxed dark:text-white">
-                        {item?.message}
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <p className="text-xs text-[#7C8092] dark:text-gray-300">
-                          {item?.sent}
+                  {item?.is_patient ? (
+                    <div className="My flex justify-end items-start mb-4">
+                      <div className="bg-[#E8F3FD] text-white p-3 rounded-lg max-w-[70%] space-y-1 dark:bg-[#6f34bc]">
+                        <p className="text-sm text-black leading-relaxed dark:text-white">
+                          {item?.message}
                         </p>
-                        <RiCheckDoubleFill className="text-[#30323E]" />
+                        <div className="flex items-center justify-between">
+                          <p className="text-xs text-[#7C8092] dark:text-gray-300">
+                            {item?.sent}
+                          </p>
+                          <RiCheckDoubleFill className="text-[#30323E]" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ) : (
-                  <div className="Friend flex justify-start items-start mb-4 space-x-2">
-                    <img
-                      className="w-8 h-8 rounded-full object-cover"
-                      src={item?.pat_profile_img}
-                      alt="Friend"
-                    />
-                    <div className="bg-white p-3 rounded-lg max-w-[70%] space-y-1 dark:bg-[#323232]">
-                      <p className="text-sm dark:text-white">{item?.message}</p>
-                      <div className="flex items-center justify-between">
-                        <p className="text-xs text-[#7C8092]">{item?.sent}</p>
-                        <RiCheckDoubleFill className="text-[#30323E]" />
+                  ) : (
+                    <div className="Friend flex justify-start items-start mb-4 space-x-2">
+                      <img
+                        className="w-8 h-8 rounded-full object-cover"
+                        src={item?.pat_profile_img}
+                        alt="Friend"
+                      />
+                      <div className="bg-white p-3 rounded-lg max-w-[70%] space-y-1 dark:bg-[#323232]">
+                        <p className="text-sm dark:text-white">
+                          {item?.message}
+                        </p>
+                        <div className="flex items-center justify-between">
+                          <p className="text-xs text-[#7C8092]">{item?.sent}</p>
+                          <RiCheckDoubleFill className="text-[#30323E]" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
+              ))}
+            </>
+          ) : (
+            <div className="flex h-screen w-full">
+              <div className="m-auto text-center font-bold text-[1.5rem]">
+                <h3 className="text-gray-600">Loading</h3>
               </div>
-            ))}
-          </>
-        ) : (
-          <div className="flex h-screen w-full">
-            <div className="m-auto text-center font-bold text-[1.5rem]">
-              <h3 className="text-gray-600">Loading</h3>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
       <div className="px-4 flex absolute bottom-[4.2rem] bg-white w-full p-2 overflow-x-hidden dark:bg-[#1e2021] dark:border-solid dark:border-[1px] dark:border-gray-700">
         <div className="flex justify-center items-center space-x-2 w-full">
