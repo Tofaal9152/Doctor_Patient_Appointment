@@ -1,6 +1,6 @@
 from dj_rest_auth.registration.serializers import RegisterSerializer
 from rest_framework import serializers
-from doctors.models import DoctorProfile, Message
+from doctors.models import DoctorProfile, Message, MedicalRecord
 from patient.models import Appointment
 from allauth.account.models import EmailAddress
 
@@ -82,9 +82,22 @@ class MessageSerializer(serializers.ModelSerializer):
     patient = serializers.PrimaryKeyRelatedField(read_only=True)
     is_patient = serializers.BooleanField(read_only=True)
     sent = serializers.DateTimeField(format="%d/%m/%y %I:%M%p", read_only=True)
-    doc_profile_img = serializers.DateTimeField(source="doctor.profile_img", read_only=True)
-    pat_profile_img = serializers.DateTimeField(source="patient.profile_img", read_only=True)
+    doc_profile_img = serializers.DateTimeField(
+        source="doctor.profile_img", read_only=True
+    )
+    pat_profile_img = serializers.DateTimeField(
+        source="patient.profile_img", read_only=True
+    )
 
     class Meta:
         fields = "__all__"
         model = Message
+
+
+class MedicalRecordSerializer(serializers.ModelSerializer):
+    doctor = serializers.PrimaryKeyRelatedField(read_only=True)
+    doctor_name = serializers.CharField(source="doctor.name")
+
+    class Meta:
+        fields = "__all__"
+        model = MedicalRecord

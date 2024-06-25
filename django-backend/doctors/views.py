@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django.db.models import Exists, OuterRef
 from django.core.mail import send_mail
-from doctors.models import DoctorProfile, Message
+from doctors.models import DoctorProfile, Message, MedicalRecord
 from patient.models import Appointment, PatientProfile
 from doctors.serializers import (
     DoctorCustomRegistrationSerializer,
@@ -13,6 +13,7 @@ from doctors.serializers import (
     AppointPatientSerializer,
     MessageSerializer,
     AppointmentSerializer,
+    MedicalRecordSerializer,
 )
 
 from patient.serializers import PatientSerializer
@@ -108,7 +109,9 @@ class MessageAPI(APIView):
 
         if serialized_data.is_valid(raise_exception=True):
             Message.objects.create(
-                doctor=request.user.doctor, patient_id=patient_id, **serialized_data.data
+                doctor=request.user.doctor,
+                patient_id=patient_id,
+                **serialized_data.data,
             )
 
         return Response({"status": "success"})
@@ -120,10 +123,42 @@ class ChatPeopleAPI(APIView):
 
     def get(self, request, format=None, *args, **kwargs):
         patient_with_messages = PatientProfile.objects.filter(
-            Exists(Message.objects.filter(patient=OuterRef("pk")))
+            Exists(
+                Message.objects.filter(
+                    patient=OuterRef("pk"), doctor=request.user.doctor
+                )
+            )
         )
 
         if patient_with_messages.count() == 0:
             return Response([])
 
         return Response(self.serializer_class(patient_with_messages, many=True).data)
+
+
+class MedicalRecordAPI(APIView):
+    serializer_class = MedicalRecordSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, format=None, *args, **kwargs):
+        patient_with_appointment = PatientProfile.objects.filter(
+            Exists(
+                Appointment.objects.filter(
+                    patient=OuterRef("pk"), doctor=request.user.doctor
+                )
+            )
+        )
+        return Response(PatientSerializer(patient_with_appointment, many=True).data)
+
+    def post(self, request, format=None, *args, **kwargs):
+        serialized_data = self.serializer_class(data=request.data)
+
+        if serialized_data.is_valid(raise_exception=True):
+            serialized_data = serialized_data.data.copy()
+            MedicalRecord.objects.create(
+                doctor=request.user.doctor,
+                patient_id=serialized_data.pop("patient"),
+                **serialized_data,
+            )
+
+        return Response({"status": "success"})

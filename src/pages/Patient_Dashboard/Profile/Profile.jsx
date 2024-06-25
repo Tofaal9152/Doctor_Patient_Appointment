@@ -8,7 +8,7 @@ import { loadFromLocalStorage } from "../../../utils/localStorage";
 import axios from "axios";
 
 const Profile = () => {
-  const [image, setImage] = useState(Avater);
+  // const [image, setImage] = useState(Avater);
   const [isEditing, setIsEditing] = useState(true); 
   const [formData, setFormData] = useState({
     name: "",
@@ -97,7 +97,7 @@ const Profile = () => {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setImage(e.target.result);
+        // setImage(e.target.result);
         uploadToImgbb(e.target.result);
       };
       reader.readAsDataURL(file);

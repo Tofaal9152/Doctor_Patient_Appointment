@@ -12,7 +12,7 @@ const TypeMessage = () => {
         <div className="flex flex-1 items-center bg-white p-1 rounded-full border border-gray-300 dark:bg-[#1e2021]">
           <input
             type="text"
-            value={text}
+            // value={text}
             onChange={(e) => setText(e.target.value)}
             className="flex-1 p-2 text-black text-sm outline-none bg-transparent dark:text-white"
             placeholder="Type a message..."

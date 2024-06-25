@@ -1,5 +1,4 @@
 import React from "react";
-import Avater from "../../../../assets/doctor_Logo.png";
 
 const ReportModal = ({ isVisible, onClose, report }) => {
   if (!isVisible) {
@@ -26,22 +25,10 @@ const ReportModal = ({ isVisible, onClose, report }) => {
             X
           </div>
           <img
-            className="w-20 h-20 rounded-full object-cover border-2 border-[#53829C]"
-            src={Avater}
+            className="w-[30rem] object-cover border-2 border-[#53829C]"
+            src={report?.file_url}
             alt="Patient Avatar"
           />
-          <h1 className="text-xl flex-wrap font-semibold mt-2 mb-2">
-            {report.patientName}
-          </h1>
-          <p className="text-sm">Age: {report.patientAge}</p>
-          <p className="text-sm">Gender: {report.patientGender}</p>
-          <div className="mt-3 text-left">
-            <h2 className="text-lg font-semibold">Medical Report</h2>
-            <p><strong>Diagnosis:</strong> {report.diagnosis}</p>
-            <p><strong>Treatment:</strong> {report.treatment}</p>
-            <p><strong>Notes:</strong> {report.notes}</p>
-            <p><strong>Date:</strong> {report.date}</p>
-          </div>
         </div>
       </div>
     </div>

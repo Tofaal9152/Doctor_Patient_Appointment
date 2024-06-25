@@ -7,14 +7,18 @@ from rest_framework.permissions import IsAuthenticated
 from django.db.models import Exists, OuterRef
 
 from patient.models import PatientProfile, Appointment
-from doctors.models import DoctorProfile, Message
+from doctors.models import DoctorProfile, Message, MedicalRecord
 from patient.serializers import (
     PatientCustomRegistrationSerializer,
     PatientSerializer,
     AppointmentSerializer,
     AppointmentDepthSerializer,
 )
-from doctors.serializers import MessageSerializer, DoctorSerializer
+from doctors.serializers import (
+    MessageSerializer,
+    DoctorSerializer,
+    MedicalRecordSerializer,
+)
 
 
 # Agent Registration
@@ -110,3 +114,18 @@ class MessageAPI(APIView):
             )
 
         return Response({"status": "success"})
+
+
+class MedicalRecordAPI(APIView):
+    serialized_data = MedicalRecordSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, format=None, *args, **kwargs):
+        return Response(
+            self.serialized_data(
+                MedicalRecord.objects.filter(
+                    patient=request.user.patient,
+                ),
+                many=True,
+            ).data,
+        )

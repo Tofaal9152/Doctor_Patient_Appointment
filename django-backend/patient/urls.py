@@ -5,6 +5,7 @@ from patient.views import (
     AppointmentAPI,
     MessageAPI,
     ChatPeopleAPI,
+    MedicalRecordAPI,
 )
 
 urlpatterns = [
@@ -15,4 +16,5 @@ urlpatterns = [
     path("appointment/", AppointmentAPI.as_view(), name="appointment"),
     path("chat-people/", ChatPeopleAPI.as_view(), name="chat_people"),
     path("message/<int:doctor_id>", MessageAPI.as_view(), name="message_patient"),
+    path("medical-records/", MedicalRecordAPI.as_view(), name="medical_records"),
 ]

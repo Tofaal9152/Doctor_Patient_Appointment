@@ -5,9 +5,10 @@ import { IoSave } from "react-icons/io5";
 import { baseUrl } from "../../../constants";
 import { loadFromLocalStorage } from "../../../utils/localStorage";
 import { useEffect } from "react";
+import axios from "axios";
 
 const Profile = () => {
-  const [image, setImage] = useState(Avater);
+  // const [image, setImage] = useState(Avater);
   const [isEditing, setIsEditing] = useState(true);
   const [isLoading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
@@ -15,8 +16,8 @@ const Profile = () => {
     specialization: "",
     from_time: "",
     to_time: "",
-    availableDays: "Monday to Friday",
-    description: "Experienced nephrologist with over 10 years of practice.",
+    description: "",
+    profile_img: "",
   });
 
   const handleImageChange = (event) => {
@@ -24,7 +25,8 @@ const Profile = () => {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setImage(e.target.result);
+        // setImage(e.target.result);
+        uploadToImgbb(e.target.result);
       };
       reader.readAsDataURL(file);
     }
@@ -32,10 +34,32 @@ const Profile = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(name, value);
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
+  };
+
+  // upload to imgbb API
+  const uploadToImgbb = async (base64Image) => {
+    try {
+      const _formData = new FormData();
+      _formData.append("image", base64Image.split(",")[1]);
+      const response = await axios.post(
+        "https://api.imgbb.com/1/upload",
+        _formData,
+        {
+          params: {
+            key: "ed67a942812ea90bf6e8f65a6c43c091",
+          },
+        }
+      );
+      console.log(response.data.data.url);
+      setFormData({ ...formData, profile_img: response.data.data.url });
+    } catch (error) {
+      console.error("Error uploading image to imgbb", error);
+    }
   };
 
   // update profile info
@@ -169,6 +193,7 @@ const Profile = () => {
                       <input
                         type="time"
                         className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        name="from_time"
                         value={formData.from_time}
                         onChange={handleChange}
                       />
@@ -185,7 +210,8 @@ const Profile = () => {
                       <input
                         type="time"
                         className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        value={formData.from_time}
+                        name="to_time"
+                        value={formData.to_time}
                         onChange={handleChange}
                       />
                       <label
