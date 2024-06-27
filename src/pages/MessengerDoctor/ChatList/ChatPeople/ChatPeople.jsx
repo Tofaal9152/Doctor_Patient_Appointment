@@ -2,7 +2,7 @@ import React from "react";
 // import { Messenger_Recent } from "../../../../constants";
 // import { messageContainer } from "../../../../constants";
 import { baseUrl } from "../../../../constants";
-import { loadFromLocalStorage } from "../../../../utils/localStorage";
+import { loadFromLocalStorage } from "../../../../commons/localStorage";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setChatPeopleId } from "../../../../Redux/counterSlice";
@@ -14,7 +14,7 @@ const ChatPeople = () => {
 
   // get profile info
   useEffect(() => {
-    let token = loadFromLocalStorage("patient-token");
+    let token = loadFromLocalStorage("doctor-token");
 
     fetch(`${baseUrl}/doctors/chat-people/`, {
       headers: {
@@ -39,6 +39,7 @@ const ChatPeople = () => {
   return (
     <div className="space-y-3 ">
       {/* heading */}
+      <br /><br /><br />
       <div className="ChatsAndPlusIcon flex justify-between items-center ">
         <h1 className="text-2xl font-bold dark:text-white">Chats</h1>
       </div>

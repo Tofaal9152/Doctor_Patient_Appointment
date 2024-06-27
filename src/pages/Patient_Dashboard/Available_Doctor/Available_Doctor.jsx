@@ -3,7 +3,7 @@ import Avater from "../../../assets/doctor_Logo.png";
 import { Doctor_Appointment } from "../../../constants";
 import Modal from "./Modal/Modal";
 import { baseUrl, weekDays } from "../../../constants";
-import { convertTimeFormat } from "../../../utils/functions";
+import { convertTimeFormat } from "../../../commons/functions";
 
 const Available_Doctor = () => {
   const [showModal, setShowModal] = useState(false);

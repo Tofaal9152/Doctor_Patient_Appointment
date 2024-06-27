@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 // import Avater from "../../../../assets/doctor_Logo.png";
 import { FaUserDoctor } from "react-icons/fa6";
-import { convertTimeFormat } from "../../../../utils/functions";
-import { loadFromLocalStorage } from "../../../../utils/localStorage";
+import { convertTimeFormat } from "../../../../commons/functions";
+import { loadFromLocalStorage } from "../../../../commons/localStorage";
 import { baseUrl, weekDays } from "../../../../constants";
 
 const Modal = ({ isVisible, onClose, doctor }) => {

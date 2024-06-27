@@ -6,6 +6,7 @@ const Left_Sidebar = () => {
   return (
     <div className={`h-screen bg-gray-gradient2 p-4 border-r`}>
       <div className="flex flex-col ">
+        <br /><br /><br />
         <div
           onClick={() => {
             navigate("/doctor");

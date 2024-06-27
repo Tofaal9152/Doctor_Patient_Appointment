@@ -17,7 +17,7 @@ const LandingPage = () => {
       className="shadow-xl interfont w-full h-screen overflow-hidden object-cover bg-left  bg-[#f7f7f7]"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      <div className="shadow-md w-full sticky top-0 glass pb-2">
+      <div className="shadow-md w-full fixed top-0 glass pb-2 z-10">
         <div className={`${style.paddingX} ${style.flexCenter}`}>
           <div className={`${style.boxWidth} `}>
             <Navbar />

@@ -4,7 +4,7 @@ import { LuCamera } from "react-icons/lu";
 import { IoSave } from "react-icons/io5";
 import { useEffect } from "react";
 import { baseUrl } from "../../../constants";
-import { loadFromLocalStorage } from "../../../utils/localStorage";
+import { loadFromLocalStorage } from "../../../commons/localStorage";
 import axios from "axios";
 
 const Profile = () => {

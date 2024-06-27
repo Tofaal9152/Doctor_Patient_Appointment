@@ -3,9 +3,9 @@ import Avater from "../../../assets/doctor_Logo.png";
 import { Medical_Reports } from "../../../constants";
 import AppointmentModal from "./AppointmentModal/AppointmentModal.jsx";
 import { baseUrl } from "../../../constants";
-import { loadFromLocalStorage } from "../../../utils/localStorage";
+import { loadFromLocalStorage } from "../../../commons/localStorage.jsx";
 import { useEffect } from "react";
-import { convertTimeFormat } from "../../../utils/functions.jsx";
+import { convertTimeFormat } from "../../../commons/functions.jsx";
 
 const Confirmed_Appointments = () => {
   // const [showModal, setShowModal] = useState(false);

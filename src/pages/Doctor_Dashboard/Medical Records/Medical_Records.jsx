@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { loadFromLocalStorage } from "../../../utils/localStorage";
+import { loadFromLocalStorage } from "../../../commons/localStorage";
 import { baseUrl } from "../../../constants";
 
 const Medical_Records = () => {

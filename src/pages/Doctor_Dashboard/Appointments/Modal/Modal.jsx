@@ -3,7 +3,7 @@ import Avater from "../../../../assets/doctor_Logo.png";
 import { FaUserDoctor } from "react-icons/fa6";
 import { MdHealthAndSafety } from "react-icons/md";
 import { MdCancel } from "react-icons/md";
-import { loadFromLocalStorage } from "../../../../utils/localStorage";
+import { loadFromLocalStorage } from "../../../../commons/localStorage";
 import { baseUrl } from "../../../../constants";
 
 const Modal = ({ isVisible, onClose, patient }) => {

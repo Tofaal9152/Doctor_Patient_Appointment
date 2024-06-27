@@ -29,6 +29,10 @@ import store from "./Redux/store.js";
 // Rect-router-dom
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import DoctorLogin from "./pages/DoctorLogin/DoctorLogin.jsx";
+import {
+  DoctorPrivateRoute,
+  PatientPrivateRoute,
+} from "./commons/PrivateRoutes.jsx";
 
 const router = createBrowserRouter([
   {
@@ -37,53 +41,101 @@ const router = createBrowserRouter([
   },
   {
     path: "/patient",
-    element: <Patient_LandingPage />,
+    element: (
+      <PatientPrivateRoute>
+        <Patient_LandingPage />
+      </PatientPrivateRoute>
+    ),
     children: [
       {
         path: "/patient",
-        element: <Available_Doctor />,
+        element: (
+          <PatientPrivateRoute>
+            <Available_Doctor />{" "}
+          </PatientPrivateRoute>
+        ),
       },
       {
         path: "/patient/profile",
-        element: <Profile_patient />,
+        element: (
+          <PatientPrivateRoute>
+            <Profile_patient />{" "}
+          </PatientPrivateRoute>
+        ),
       },
       {
         path: "/patient/messages",
-        element: <Messenger />,
+        element: (
+          <PatientPrivateRoute>
+            <Messenger />{" "}
+          </PatientPrivateRoute>
+        ),
       },
       {
         path: "/patient/medicalreport",
-        element: <Medical_Report />,
+        element: (
+          <PatientPrivateRoute>
+            <Medical_Report />
+          </PatientPrivateRoute>
+        ),
       },
       {
         path: "/patient/myappointment",
-        element: <MyAppointment />,
+        element: (
+          <PatientPrivateRoute>
+            <MyAppointment />
+          </PatientPrivateRoute>
+        ),
       },
     ],
   },
   {
     path: "/doctor",
-    element: <Doctor_LandingPage />,
+    element: (
+      <DoctorPrivateRoute>
+        <Doctor_LandingPage />{" "}
+      </DoctorPrivateRoute>
+    ),
     children: [
       {
         path: "/doctor",
-        element: <Appointments />,
+        element: (
+          <DoctorPrivateRoute>
+            <Appointments />{" "}
+          </DoctorPrivateRoute>
+        ),
       },
       {
         path: "/doctor/profile",
-        element: <Doctor_profile />,
+        element: (
+          <DoctorPrivateRoute>
+            <Doctor_profile />
+          </DoctorPrivateRoute>
+        ),
       },
       {
         path: "/doctor/messages",
-        element: <MessengerDoctor />,
+        element: (
+          <DoctorPrivateRoute>
+            <MessengerDoctor />
+          </DoctorPrivateRoute>
+        ),
       },
       {
         path: "/doctor/medicalrecords",
-        element: <Medical_Records />,
+        element: (
+          <DoctorPrivateRoute>
+            <Medical_Records />
+          </DoctorPrivateRoute>
+        ),
       },
       {
         path: "/doctor/confirmappointment",
-        element: <Confirmed_Appointments />,
+        element: (
+          <DoctorPrivateRoute>
+            <Confirmed_Appointments />
+          </DoctorPrivateRoute>
+        ),
       },
     ],
   },

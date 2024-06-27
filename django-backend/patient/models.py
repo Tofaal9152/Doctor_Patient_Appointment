@@ -19,6 +19,9 @@ class PatientProfile(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="patient"
     )
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class Appointment(models.Model):
     patient = models.ForeignKey(

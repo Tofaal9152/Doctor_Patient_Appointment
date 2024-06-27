@@ -3,7 +3,7 @@ import Avater from "../../../assets/doctor_Logo.png";
 import { Medical_Reports } from "../../../constants";
 import ReportModal from "./ReportModal/ReportModal.jsx";
 import { baseUrl } from "../../../constants";
-import { loadFromLocalStorage } from "../../../utils/localStorage.jsx";
+import { loadFromLocalStorage } from "../../../commons/localStorage.jsx";
 import { useEffect } from "react";
 
 const MedicalReport = () => {

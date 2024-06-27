@@ -9,7 +9,10 @@ import { useDispatch } from "react-redux";
 import { setOpen_doctor_sidebar } from "../../../Redux/counterSlice";
 import { IoLogInOutline } from "react-icons/io5";
 import { useEffect } from "react";
-import { loadFromLocalStorage } from "../../../utils/localStorage";
+import {
+  loadFromLocalStorage,
+  removeFromLocalStorage,
+} from "../../../commons/localStorage";
 import { baseUrl } from "../../../constants";
 
 const Navbar = () => {
@@ -60,9 +63,13 @@ const Navbar = () => {
         />
       </div>
       {/*  */}
-      <div className="bg-[#76c3ed] space-x-1 flex items-center justify-center hover:bg-[#7dcefa] rounded-md px-3 py-2 cursor-pointer text-md font-semibold text-white" onClick={()=>{
-        navigate("/");
-      }}>
+      <div
+        className="bg-[#76c3ed] space-x-1 flex items-center justify-center hover:bg-[#7dcefa] rounded-md px-3 py-2 cursor-pointer text-md font-semibold text-white"
+        onClick={() => {
+          removeFromLocalStorage("patient-token");
+          navigate("/");
+        }}
+      >
         <span>Log out</span>
         <div>
           <IoLogInOutline size={25} className="" />

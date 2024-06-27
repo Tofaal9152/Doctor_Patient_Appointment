@@ -3,7 +3,7 @@ import Avater from "../../../assets/doctor_Logo.png";
 import { LuCamera } from "react-icons/lu";
 import { IoSave } from "react-icons/io5";
 import { baseUrl } from "../../../constants";
-import { loadFromLocalStorage } from "../../../utils/localStorage";
+import { loadFromLocalStorage } from "../../../commons/localStorage";
 import { useEffect } from "react";
 import axios from "axios";
 

@@ -4,8 +4,8 @@ import { User_Appointments } from "../../../constants";
 import AppointmentModal from "./AppointmentModal/AppointmentModal.jsx";
 import { useEffect } from "react";
 import { baseUrl } from "../../../constants";
-import { loadFromLocalStorage } from "../../../utils/localStorage.jsx";
-import { convertTimeFormat } from "../../../utils/functions.jsx";
+import { loadFromLocalStorage } from "../../../commons/localStorage.jsx";
+import { convertTimeFormat } from "../../../commons/functions.jsx";
 
 const Confirmed_Appointments = () => {
   const [showModal, setShowModal] = useState(false);

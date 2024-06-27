@@ -2,7 +2,7 @@ import React from "react";
 // import { Messenger_Recent } from "../../../../constants";
 // import { messageContainer } from "../../../../constants";
 import { baseUrl } from "../../../../constants";
-import { loadFromLocalStorage } from "../../../../utils/localStorage";
+import { loadFromLocalStorage } from "../../../../commons/localStorage";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setChatPeopleId } from "../../../../Redux/counterSlice";

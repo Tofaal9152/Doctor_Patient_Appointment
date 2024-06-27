@@ -4,7 +4,7 @@ import { Patient_Appointment } from "../../../constants";
 import Modal from "./Modal/Modal";
 import { useEffect } from "react";
 import { baseUrl } from "../../../constants";
-import { loadFromLocalStorage } from "../../../utils/localStorage";
+import { loadFromLocalStorage } from "../../../commons/localStorage";
 
 const Available_Doctor = () => {
   const [showModal, setShowModal] = useState(false);

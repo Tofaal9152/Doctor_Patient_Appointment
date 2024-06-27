@@ -7,6 +7,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { useDispatch } from "react-redux";
 import { setOpen_doctor_sidebar } from "../../../Redux/counterSlice";
 import { IoLogInOutline } from "react-icons/io5";
+import { removeFromLocalStorage } from "../../../commons/localStorage";
 
 const Navbar = () => {
   // state
@@ -37,6 +38,7 @@ const Navbar = () => {
       <div
         className="bg-[#76c3ed] space-x-1 flex items-center justify-center hover:bg-[#7dcefa] rounded-md px-3 py-2 cursor-pointer text-md font-semibold text-white"
         onClick={() => {
+          removeFromLocalStorage("doctor-token");
           navigate("/");
         }}
       >

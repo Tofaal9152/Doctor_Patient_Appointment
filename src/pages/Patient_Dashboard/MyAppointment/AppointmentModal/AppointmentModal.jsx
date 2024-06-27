@@ -1,6 +1,6 @@
 import React from "react";
 import Avater from "../../../../assets/doctor_Logo.png";
-import { convertTimeFormat } from "../../../../utils/functions";
+import { convertTimeFormat } from "../../../../commons/functions";
 
 const AppointmentModal = ({ isVisible, onClose, appointment }) => {
   if (!isVisible) {

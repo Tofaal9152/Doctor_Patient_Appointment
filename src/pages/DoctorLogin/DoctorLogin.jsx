@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import backgroundImage from "../../assets/bgImage.jpg";
 import { baseUrl } from "../../constants";
-import { storeInLocalStorage } from "../../utils/localStorage";
+import { storeInLocalStorage } from "../../commons/localStorage";
 import { useNavigate } from "react-router-dom";
 
 const DoctorLogin = () => {
@@ -101,6 +101,16 @@ const DoctorLogin = () => {
               />
             </div>
           </form>
+          <span className="text-sm text-gray-900 mt-[2rem] block">
+            Don't have an account?{" "}
+            <span className="text-blue-600 hover:underline cursor-pointer"
+              onClick={() => {
+                navigate("/doctorregistration");
+              }}
+            >
+              Reigster
+            </span>
+          </span>
         </div>
       </div>
     </div>
