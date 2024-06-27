@@ -2,10 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const Left_Sidebar = () => {
-  const navigate =useNavigate()
+  const navigate = useNavigate();
   return (
     <div className={`h-screen bg-gray-gradient2 p-4 border-r`}>
       <div className="flex flex-col ">
+        <br />
+        <br />
+        <br />
         <div
           onClick={() => {
             navigate("/patient");

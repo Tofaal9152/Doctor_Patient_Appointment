@@ -12,6 +12,7 @@ const MeAndFriendConversation = () => {
   const [chattingBetween, setChattingBetween] = useState([]);
   const [text, setText] = useState("");
   const messagesEndRef = useRef();
+  const intervalRef = useRef(null);
 
   const loadChats = () => {
     if (chatPeopleId == null) return;
@@ -35,6 +36,7 @@ const MeAndFriendConversation = () => {
         setChattingBetween(data);
         setLoading(false);
         console.log(data);
+        messagesEndRef.current?.scrollIntoView();
       });
   };
 
@@ -59,7 +61,6 @@ const MeAndFriendConversation = () => {
         // if (data == null) return;
         loadChats();
         console.log(data);
-        messagesEndRef.current?.scrollIntoView();
       });
   };
 
@@ -67,6 +68,20 @@ const MeAndFriendConversation = () => {
     setLoading(true);
     if (chatPeopleId !== null) {
       loadChats();
+      messagesEndRef.current?.scrollIntoView();
+
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+
+      const timeLoop = setInterval(loadChats, 2000);
+      intervalRef.current = timeLoop;
+
+      return () => {
+        if (intervalRef.current) {
+          clearInterval(intervalRef.current);
+        }
+      };
     }
   }, [chatPeopleId]);
 
@@ -82,7 +97,7 @@ const MeAndFriendConversation = () => {
 
   return (
     <>
-      <div className="px-2 lg:px-[4rem] xl:px-[7rem] pt-[1rem] flex flex-col overflow-y-auto h-100vh space-y-5 bg-[#F5F5F7] dark:bg-[#1e2021]">
+      <div className="px-2 lg:px-[4rem] xl:px-[7rem] flex flex-col overflow-y-auto h-full space-y-5 bg-[#F5F5F7] dark:bg-[#1e2021] pt-24">
         {!isLoading ? (
           <>
             {chattingBetween.map((item, index) => (
@@ -121,7 +136,7 @@ const MeAndFriendConversation = () => {
                 )}
               </div>
             ))}
-            <div className="block py-12"></div>
+            <div className="block py-16"></div>
             <div
               style={{ float: "left", clear: "both" }}
               ref={messagesEndRef}

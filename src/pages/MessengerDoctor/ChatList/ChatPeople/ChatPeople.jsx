@@ -6,9 +6,11 @@ import { loadFromLocalStorage } from "../../../../commons/localStorage";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setChatPeopleId } from "../../../../Redux/counterSlice";
+import { useSelector } from "react-redux";
 
 const ChatPeople = () => {
   const dispatch = useDispatch();
+  const chatPeopleId = useSelector((state) => state.counter.chatPeopleId);
   const [isLoading, setLoading] = useState(true);
   const [messageContainer, setMessageContainer] = useState([]);
 
@@ -39,7 +41,9 @@ const ChatPeople = () => {
   return (
     <div className="space-y-3 ">
       {/* heading */}
-      <br /><br /><br />
+      <br />
+      <br />
+      <br />
       <div className="ChatsAndPlusIcon flex justify-between items-center ">
         <h1 className="text-2xl font-bold dark:text-white">Chats</h1>
       </div>
@@ -49,8 +53,10 @@ const ChatPeople = () => {
           {messageContainer.map((item, index) => (
             <div
               key={index}
-              className="dark:bg-[#1e2021] dark:border-gray-700 flex relative justify-between items-center border border-gray-300  cursor-pointer bg-white rounded-xl p-3 shadow-lg"
-              onClick={() => {                
+              className={`${
+                chatPeopleId == item?.id ? "bg-blue-300" : "bg-white"
+              } flex relative justify-between items-center border border-gray-300  cursor-pointer bg-white rounded-xl p-3 shadow-lg`}
+              onClick={() => {
                 dispatch(setChatPeopleId(item?.id));
               }}
             >

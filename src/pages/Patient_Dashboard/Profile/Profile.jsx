@@ -115,7 +115,7 @@ const Profile = () => {
   return (
     <>
       {!isLoading ? (
-        <div className="w-full h-screen flex justify-center ">
+        <div className="w-full h-screen flex justify-center pt-24">
           <form className="mt-10">
             <h1 className="text-[#53829C] text-3xl font-bold text-center mb-6">
               Your Profile

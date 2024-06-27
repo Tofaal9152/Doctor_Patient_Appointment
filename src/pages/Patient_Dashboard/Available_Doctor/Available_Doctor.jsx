@@ -37,7 +37,7 @@ const Available_Doctor = () => {
   return (
     <Fragment>
       {!isLoading ? (
-        <div className=" bg-transparent  w-full h-screen overflow-y-scroll custom-scrollbar p-3">
+        <div className=" bg-transparent  w-full h-screen overflow-y-scroll custom-scrollbar p-3 pt-24">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 custom1200:grid-cols-4 gap-5">
             {doctorList.map((item, index) => {
               return (

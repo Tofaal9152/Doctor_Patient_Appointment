@@ -115,7 +115,7 @@ const Profile = () => {
   return (
     <>
       {!isLoading ? (
-        <div className="w-full h-screen overflow-y-scroll flex flex-col items-center">
+        <div className="w-full h-screen overflow-y-scroll flex flex-col items-center pt-20">
           <form className="mx-[7rem] mt-[3rem]">
             <h1 className="text-[#53829C] text-3xl font-bold text-center mb-6">
               Your Profile

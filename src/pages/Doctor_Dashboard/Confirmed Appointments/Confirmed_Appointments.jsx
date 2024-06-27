@@ -44,7 +44,7 @@ const Confirmed_Appointments = () => {
   return (
     <Fragment>
       {!isLoading ? (
-        <div className="bg-transparent w-full h-screen overflow-y-scroll custom-scrollbar p-3">
+        <div className="bg-transparent w-full h-screen overflow-y-scroll custom-scrollbar p-3 pt-24">
           {appointmentList.length == 0 && (
             <div className="flex h-screen w-full">
               <div className="m-auto text-center font-bold text-[1.5rem]">

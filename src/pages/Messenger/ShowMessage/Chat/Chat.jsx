@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { RiCheckDoubleFill } from "react-icons/ri";
 import { IoIosSend } from "react-icons/io";
-import { chating_between } from "../../../../constants";
 import { useSelector } from "react-redux";
 import { baseUrl } from "../../../../constants";
 import { loadFromLocalStorage } from "../../../../commons/localStorage";
@@ -11,6 +10,8 @@ const MeAndFriendConversation = () => {
   const [isLoading, setLoading] = useState(true);
   const [chattingBetween, setChattingBetween] = useState([]);
   const [text, setText] = useState("");
+  const messagesEndRef = useRef();
+  const intervalRef = useRef(null);
 
   const loadChats = () => {
     if (chatPeopleId == null) return;
@@ -33,6 +34,7 @@ const MeAndFriendConversation = () => {
         setChattingBetween(data);
         setLoading(false);
         console.log(data);
+        messagesEndRef.current?.scrollIntoView();
       });
   };
 
@@ -54,9 +56,7 @@ const MeAndFriendConversation = () => {
         return res.text();
       })
       .then((data) => {
-        // if (data == null) return;
         loadChats();
-        console.log(data);
       });
   };
 
@@ -64,29 +64,31 @@ const MeAndFriendConversation = () => {
     setLoading(true);
     if (chatPeopleId !== null) {
       loadChats();
+      messagesEndRef.current?.scrollIntoView();
+
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+
+      const timeLoop = setInterval(loadChats, 2000);
+      intervalRef.current = timeLoop;
+
+      return () => {
+        if (intervalRef.current) {
+          clearInterval(intervalRef.current);
+        }
+      };
     }
   }, [chatPeopleId]);
 
-  // interval here
-  // useEffect(() => {
-  //   if (chatPeopleId !== null) {
-  //     const intervalId = setInterval(loadChats, 5000);
-  //     return () => {
-  //       clearInterval(intervalId);
-  //     };
-  //   }
-  // }, []);
-
   return (
     <>
-      <div className="mb-[8rem] px-2 lg:px-[4rem] xl:px-[7rem] hide_scroll pt-[1rem] flex flex-col overflow-y-auto h-full space-y-5 bg-[#F5F5F7] dark:bg-[#1e2021]">
+      <div className="px-2 lg:px-[4rem] xl:px-[7rem] hide_scroll flex flex-col overflow-y-auto h-full space-y-5 bg-[#F5F5F7] dark:bg-[#1e2021] pt-24">
         <div className="flex w-[50vw] flex-col space-y-4">
           {!isLoading ? (
             <>
               {chattingBetween.map((item, index) => (
                 <div key={index} className="">
-                  {/* ME */}
-
                   {item?.is_patient ? (
                     <div className="My flex justify-end items-start mb-4">
                       <div className="bg-[#E8F3FD] text-white p-3 rounded-lg max-w-[70%] space-y-1 dark:bg-[#6f34bc]">
@@ -121,6 +123,11 @@ const MeAndFriendConversation = () => {
                   )}
                 </div>
               ))}
+              <div className="block py-16"></div>
+              <div
+                style={{ float: "left", clear: "both" }}
+                ref={messagesEndRef}
+              ></div>
             </>
           ) : (
             <div className="flex h-screen w-full">
@@ -132,10 +139,8 @@ const MeAndFriendConversation = () => {
         </div>
       </div>
 
-      {/* Type Message */}
-      <div className="px-4 flex absolute bottom-[4.2rem] bg-white w-full p-2 overflow-x-hidden dark:bg-[#1e2021] dark:border-solid dark:border-[1px] dark:border-gray-700">
+      <div className="px-4 flex absolute bottom-0 bg-white w-full p-2 overflow-x-hidden dark:bg-[#1e2021] dark:border-solid dark:border-[1px] dark:border-gray-700">
         <div className="flex justify-center items-center space-x-2 w-full">
-          {/* Input Area */}
           <div className="flex flex-1 items-center bg-white p-1 rounded-full border border-gray-300 dark:bg-[#1e2021]">
             <input
               type="text"
@@ -145,12 +150,11 @@ const MeAndFriendConversation = () => {
               placeholder="Type a message..."
             />
           </div>
-          {/* Send Button */}
           <div
             className="cursor-pointer p-2 rounded-full bg-[#9746ff] hover:bg-[#8e3df8]"
-            onClick={(e) => {
+            onClick={() => {
               postText(text);
-              e.target.value = "";
+              setText("");
             }}
           >
             <IoIosSend className="text-white" size={22} />
